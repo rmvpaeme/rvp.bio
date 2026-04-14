@@ -339,6 +339,15 @@
     .article-body p { font-size: .83rem; color: var(--muted); }
 
     /* ── Awards & Certs ───────────────────────────────────────── */
+    /* ── Presentations ───────────────────────────────────────── */
+    #presentations { background: #E5E9F0; }
+    .pres-award {
+      display: inline-block; margin-left: .5rem;
+      font-size: .72rem; padding: .1rem .5rem; border-radius: 4px;
+      background: rgba(163,190,140,.25); color: #4a6741;
+      font-weight: 600; vertical-align: middle;
+    }
+
     #awards { background: #E5E9F0; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     .two-col h3 { font-size: .8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 1rem; }
@@ -402,6 +411,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#posters">Posters</a></li>
+    <li><a href="#presentations">Presentations</a></li>
     <li><a href="#software">Software</a></li>
     <li><a href="#articles">Articles</a></li>
     <li><a href="#awards">Awards</a></li>
@@ -415,6 +425,7 @@
   <a href="#experience" onclick="closeMobileMenu()">Experience</a>
   <a href="#publications" onclick="closeMobileMenu()">Publications</a>
   <a href="#posters" onclick="closeMobileMenu()">Posters</a>
+  <a href="#presentations" onclick="closeMobileMenu()">Presentations</a>
   <a href="#software" onclick="closeMobileMenu()">Software</a>
   <a href="#articles" onclick="closeMobileMenu()">Articles</a>
   <a href="#awards" onclick="closeMobileMenu()">Awards</a>
@@ -427,17 +438,8 @@
     <h1>Ruben Van Paemel</h1>
     <div class="credentials">MD · PhD</div>
     <p class="tagline">
-      Pediatrician specialising in hematology &amp; oncology · Cancer genomics, liquid biopsy
-      biomarkers, big-data analysis &amp; artificial intelligence
+      Pediatrician with experience in pediatric oncology, hematology, precision medicine, with a PhD in cancer genomics, biomarkers, big data analysis and artificial intelligence.
     </p>
-<div class="hero-pills">
-      <span class="pill">Pediatric Oncology</span>
-      <span class="pill">Liquid Biopsy</span>
-      <span class="pill">cfDNA Methylome</span>
-      <span class="pill">Clinical Trials</span>
-      <span class="pill">Bioinformatics</span>
-      <span class="pill">R / Python</span>
-    </div>
     <div class="hero-cta">
       <a href="#publications" class="btn btn-primary">View Publications</a>
       <a href="mailto:Ruben.VanPaemel@outlook.com" class="btn btn-outline">Get in Touch</a>
@@ -861,6 +863,39 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRESENTATIONS ══════════ -->
+<section id="presentations">
+  <div class="container">
+    <div class="section-header">
+      <h2>Presentations</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="articles-list">
+      <div class="article-item">
+        <span class="article-year-badge">2026</span>
+        <div class="article-body">
+          <h4>Lymphadenopathy work-up</h4>
+          <p>Master of Specialist Medicine – Paediatrics</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2025</span>
+        <div class="article-body">
+          <h4>Unmasking Familial Hemophagocytic Lymphohistiocytosis type 3: Chronic Disseminated Rubella Infection Following MMR Vaccination <span class="pres-award">Travel grant</span></h4>
+          <p>eBMT Inborn Error Working Party</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2025</span>
+        <div class="article-body">
+          <h4>Acute management of sickle cell anemia</h4>
+          <p>Kinderartsenvergadering</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
