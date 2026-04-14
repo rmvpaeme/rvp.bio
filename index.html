@@ -358,6 +358,17 @@
     }
     .plain-list li:last-child { border-bottom: none; }
 
+    /* ── Scroll-in animations ────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
     /* ── Footer ───────────────────────────────────────────────── */
     footer {
       background: var(--navy); color: rgba(255,255,255,.6);
@@ -483,19 +494,19 @@
         </div>
         <div class="scholar-stats">
           <div class="scholar-stat">
-            <div class="scholar-stat-num">1066</div>
+            <div class="scholar-stat-num" id="stat-citations">—</div>
             <div class="scholar-stat-label">Citations</div>
           </div>
           <div class="scholar-stat">
-            <div class="scholar-stat-num">12</div>
+            <div class="scholar-stat-num" id="stat-hindex">—</div>
             <div class="scholar-stat-label">h-index</div>
           </div>
           <div class="scholar-stat">
-            <div class="scholar-stat-num">14</div>
+            <div class="scholar-stat-num" id="stat-i10">—</div>
             <div class="scholar-stat-label">i10-index</div>
           </div>
         </div>
-        <p class="scholar-source">Source: <a href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></p>
+        <p class="scholar-source">Source: <a href="https://openalex.org/authors/https://orcid.org/0000-0001-7324-3570" target="_blank" rel="noopener">OpenAlex</a></p>
         <div class="social-links">
           <a class="social-btn" href="https://github.com/rmvpaeme" target="_blank" rel="noopener">GitHub</a>
           <a class="social-btn" href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
@@ -1107,6 +1118,44 @@
   });
 
   pubSearch.addEventListener('input', applyFilters);
+
+  // OpenAlex metrics
+  fetch('https://api.openalex.org/authors/https://orcid.org/0000-0001-7324-3570')
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('stat-citations').textContent = d.cited_by_count.toLocaleString();
+      document.getElementById('stat-hindex').textContent    = d.summary_stats.h_index;
+      document.getElementById('stat-i10').textContent       = d.summary_stats.i10_index;
+    })
+    .catch(() => {
+      document.getElementById('stat-citations').textContent = '1066';
+      document.getElementById('stat-hindex').textContent    = '12';
+      document.getElementById('stat-i10').textContent       = '14';
+    });
+
+  // Scroll-in animations
+  const fadeEls = document.querySelectorAll(
+    '#about .about-grid, #about .section-header,' +
+    '#experience .timeline-item,' +
+    '#publications .section-header, #publications .pub-filters, #publications .pub-card,' +
+    '#posters .section-header, #posters .poster-card,' +
+    '#presentations .section-header, #presentations .article-item,' +
+    '#software .section-header, #software .software-grid,' +
+    '#articles .section-header, #articles .article-item,' +
+    '#awards .section-header, #awards .two-col'
+  );
+  fadeEls.forEach(el => el.classList.add('fade-up'));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeEls.forEach(el => observer.observe(el));
 
   // Highlight active nav link on scroll
   const sections = document.querySelectorAll('section[id]');
