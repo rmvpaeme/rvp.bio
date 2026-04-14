@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruben Van Paemel, MD/PhD</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%232E3440'/><text x='16' y='22' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='18' fill='%2388C0D0'>R</text></svg>" />
+  <meta name="description" content="Ruben Van Paemel — MD/PhD, Fellow in Pediatric Hematology &amp; Oncology at Ghent University Hospital. Research in cancer genomics, liquid biopsy, cfDNA methylome, and bioinformatics." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Ruben Van Paemel, MD/PhD" />
+  <meta property="og:description" content="Pediatrician specialising in hematology &amp; oncology · Cancer genomics, liquid biopsy biomarkers, big-data analysis &amp; artificial intelligence" />
+  <meta property="og:image" content="headshot.png" />
+  <meta property="og:locale" content="en_US" />
+  <!-- Twitter/X card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ruben Van Paemel, MD/PhD" />
+  <meta name="twitter:description" content="Pediatrician specialising in hematology &amp; oncology · Cancer genomics, liquid biopsy biomarkers, big-data analysis &amp; AI" />
+  <meta name="twitter:image" content="headshot.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #ECEFF4;
+      color: #2E3440;
+      line-height: 1.65;
+    }
+    a { color: #5E81AC; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nord palette ─────────────────────────────────────────── */
+    /* Polar Night: #2E3440 #3B4252 #434C5E #4C566A             */
+    /* Snow Storm:  #D8DEE9 #E5E9F0 #ECEFF4                     */
+    /* Frost:       #8FBCBB #88C0D0 #81A1C1 #5E81AC             */
+    /* Aurora:      #BF616A #D08770 #EBCB8B #A3BE8C #B48EAD     */
+
+    /* ── Design tokens ────────────────────────────────────────── */
+    :root {
+      --navy:   #2E3440;
+      --blue:   #5E81AC;
+      --teal:   #88C0D0;
+      --frost2: #81A1C1;
+      --light:  #E5E9F0;
+      --border: #D8DEE9;
+      --text:   #3B4252;
+      --muted:  #4C566A;
+      --card:   #ECEFF4;
+      --radius: 10px;
+      --shadow: 0 2px 12px rgba(46,52,64,.10);
+    }
+
+    /* ── Navigation ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(46,52,64,.97);
+      backdrop-filter: blur(8px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem; height: 58px;
+    }
+    .nav-brand {
+      color: #fff; font-weight: 600; font-size: .95rem; letter-spacing: .02em;
+    }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a {
+      color: rgba(216,222,233,.78); font-size: .82rem; font-weight: 500;
+      letter-spacing: .04em; text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: #88C0D0; text-decoration: none; }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: #2E3440;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(136,192,208,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 100%, rgba(94,129,172,.06) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+      border: 3px solid #4C566A;
+      box-shadow: 0 4px 24px rgba(0,0,0,.35);
+    }
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; color: #ECEFF4; letter-spacing: -.01em;
+      margin-bottom: .4rem;
+    }
+    .hero-content .credentials {
+      font-size: 1.05rem; color: #88C0D0; font-weight: 600; margin-bottom: .6rem;
+    }
+    .hero-content .tagline {
+      font-size: 1rem; color: #D8DEE9; max-width: 580px;
+      margin: 0 auto 1.5rem; line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex; gap: 0; justify-content: center;
+      margin: 0 auto 2rem; max-width: 500px;
+      border: 1px solid #4C566A; border-radius: 10px; overflow: hidden;
+    }
+    .hero-stat {
+      flex: 1; padding: .75rem .5rem; text-align: center;
+      border-right: 1px solid #4C566A;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-size: 1.4rem; font-weight: 700; color: #88C0D0; line-height: 1; }
+    .hero-stat-label { font-size: .7rem; color: #81A1C1; margin-top: .25rem; text-transform: uppercase; letter-spacing: .05em; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2rem; }
+    .pill {
+      background: #3B4252; border: 1px solid #4C566A;
+      color: #D8DEE9; padding: .35rem .9rem;
+      border-radius: 20px; font-size: .8rem; font-weight: 500;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: .65rem 1.6rem; border-radius: 6px; font-size: .88rem;
+      font-weight: 600; cursor: pointer; transition: all .2s; display: inline-block;
+    }
+    .btn-primary { background: #88C0D0; color: #2E3440; border: none; }
+    .btn-primary:hover { background: #81A1C1; text-decoration: none; }
+    .btn-outline {
+      background: transparent; color: #D8DEE9;
+      border: 1.5px solid #4C566A;
+    }
+    .btn-outline:hover { border-color: #88C0D0; color: #88C0D0; text-decoration: none; }
+
+    /* ── Section wrapper ──────────────────────────────────────── */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 {
+      font-size: 1.9rem; font-weight: 700; color: var(--navy);
+      margin-bottom: .4rem;
+    }
+    .section-header .subtitle { color: var(--muted); font-size: .95rem; }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      border-radius: 2px; margin: .7rem auto 0;
+    }
+
+    /* ── About ────────────────────────────────────────────────── */
+    #about { background: #E5E9F0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .about-text p { color: var(--text); margin-bottom: 1rem; font-size: .97rem; }
+    .contact-card {
+      background: var(--light); border-radius: var(--radius); padding: 1.8rem;
+      border: 1px solid var(--border);
+    }
+    .contact-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 1.2rem; }
+    .contact-item { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; font-size: .9rem; color: var(--text); }
+    .contact-icon { flex-shrink: 0; color: var(--muted); }
+    .scholar-stats { display: flex; gap: 0; margin-top: 1.2rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .scholar-stat { flex: 1; text-align: center; padding: .6rem .4rem; border-right: 1px solid var(--border); }
+    .scholar-stat:last-child { border-right: none; }
+    .scholar-stat-num { font-size: 1.1rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .scholar-stat-label { font-size: .67rem; color: var(--muted); margin-top: .2rem; text-transform: uppercase; letter-spacing: .04em; }
+    .scholar-source { font-size: .72rem; color: var(--muted); margin-top: .5rem; text-align: right; }
+    .social-links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .4rem .9rem; border-radius: 6px;
+      background: #ECEFF4; border: 1px solid var(--border);
+      font-size: .82rem; font-weight: 500; color: var(--navy);
+      transition: all .2s;
+    }
+    .social-btn:hover { border-color: var(--teal); color: var(--teal); text-decoration: none; }
+
+    /* ── Experience / Timeline ────────────────────────────────── */
+    #experience { background: #ECEFF4; }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 22px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; padding: 0 0 2.5rem 64px; }
+    .tl-dot {
+      position: absolute; left: 10px; top: 4px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      border: 3px solid #ECEFF4; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; color: #fff; font-weight: 700;
+    }
+    .tl-date { font-size: .78rem; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .3rem; }
+    .tl-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: .15rem; }
+    .tl-org { font-size: .9rem; font-weight: 500; color: var(--blue); margin-bottom: .6rem; }
+    .tl-body { font-size: .88rem; color: var(--text); line-height: 1.6; }
+    .tl-body ul { margin: .5rem 0 0 1.2rem; }
+    .tl-body li { margin-bottom: .25rem; }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+    .tag {
+      font-size: .73rem; padding: .2rem .6rem; border-radius: 4px;
+      background: var(--light); color: var(--teal); font-weight: 500;
+      border: 1px solid #88C0D0;
+    }
+
+    /* ── Publications ─────────────────────────────────────────── */
+    #publications { background: #E5E9F0; }
+    .pub-controls { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-bottom: 2rem; }
+    .pub-filters { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+    .filter-btn {
+      padding: .35rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 500;
+      cursor: pointer; border: 1.5px solid var(--border); background: #ECEFF4;
+      color: var(--muted); transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--teal); color: #2E3440; border-color: var(--teal);
+    }
+    .pub-search {
+      width: 100%; max-width: 420px;
+      padding: .5rem 1rem; border-radius: 20px;
+      border: 1.5px solid var(--border); background: #ECEFF4;
+      font-size: .88rem; color: var(--navy); outline: none;
+      transition: border-color .2s; font-family: inherit;
+    }
+    .pub-search:focus { border-color: var(--teal); }
+    .pub-search::placeholder { color: var(--muted); }
+    .pub-no-results { text-align: center; color: var(--muted); padding: 2rem 0; font-size: .9rem; display: none; }
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.3rem 1.5rem;
+      box-shadow: var(--shadow); transition: box-shadow .2s;
+    }
+    .pub-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+    .pub-meta { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .4rem; }
+    .pub-year {
+      background: var(--navy); color: #fff; padding: .15rem .5rem;
+      border-radius: 4px; font-size: .72rem; font-weight: 600;
+    }
+    .pub-journal { font-size: .8rem; font-weight: 500; color: var(--muted); font-style: italic; }
+    .pub-title { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: .5rem; line-height: 1.4; }
+    .pub-authors { font-size: .82rem; color: var(--muted); margin-bottom: .6rem; line-height: 1.5; }
+    .pub-authors strong { color: var(--navy); font-weight: 600; }
+    .pub-footer { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+    .doi-link {
+      font-size: .78rem; color: var(--teal); font-weight: 500;
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+    .doi-link:hover { color: var(--blue); }
+    .pub-type {
+      font-size: .72rem; padding: .15rem .5rem; border-radius: 4px;
+      font-weight: 500;
+    }
+    .type-original { background: rgba(136,192,208,.2); color: #5E81AC; }
+    .type-review { background: rgba(163,190,140,.2); color: #4a6741; }
+    .type-preprint { background: rgba(235,203,139,.2); color: #7d6030; }
+    .type-case { background: rgba(180,142,173,.2); color: #7a5470; }
+
+    /* ── Posters ─────────────────────────────────────────────── */
+    #posters { background: #ECEFF4; }
+    .posters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .poster-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: all .2s;
+    }
+    .poster-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+    .poster-card a { display: block; overflow: hidden; background: #D8DEE9; }
+    .poster-card img {
+      width: 100%; display: block;
+      aspect-ratio: 3/4; object-fit: cover; object-position: top;
+      transition: transform .3s;
+    }
+    .poster-card:hover img { transform: scale(1.02); }
+    .poster-info { padding: 1rem 1.1rem 1.2rem; }
+    .poster-title { font-size: .9rem; font-weight: 600; color: var(--navy); margin-bottom: .3rem; line-height: 1.4; }
+    .poster-conference { font-size: .78rem; font-weight: 600; color: var(--teal); margin-bottom: .35rem; }
+    .poster-meta { font-size: .8rem; color: var(--muted); line-height: 1.5; margin-bottom: .7rem; }
+    .poster-download {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .8rem; font-weight: 500; color: var(--blue);
+    }
+    .poster-download:hover { color: var(--teal); text-decoration: none; }
+
+    /* ── Software / Projects ──────────────────────────────────── */
+    #software { background: #E5E9F0; }
+    .project-list { display: flex; flex-direction: column; gap: .75rem; }
+    .project-row {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 1rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.3rem;
+      box-shadow: var(--shadow); transition: border-color .2s;
+    }
+    .project-row:hover { border-color: var(--teal); }
+    .project-row-info h3 { font-size: .95rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+    .project-row-info p { font-size: .85rem; color: var(--muted); margin: 0; }
+    .project-row-links { display: flex; gap: .6rem; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+    .project-lang {
+      font-size: .72rem; padding: .15rem .55rem; border-radius: 4px;
+      background: rgba(235,203,139,.25); color: #7d6030; font-weight: 600; border: 1px solid rgba(235,203,139,.6);
+      align-self: flex-start;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .82rem; font-weight: 500; color: var(--teal);
+      white-space: nowrap;
+    }
+    .project-link:hover { color: var(--blue); text-decoration: none; }
+    .software-footer { text-align: center; margin-top: 1.5rem; font-size: .88rem; color: var(--muted); }
+
+    /* ── Articles ─────────────────────────────────────────────── */
+    #articles { background: #ECEFF4; }
+    .articles-list { display: flex; flex-direction: column; gap: .8rem; }
+    .article-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 1.2rem; border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--card);
+      transition: border-color .2s;
+    }
+    .article-item:hover { border-color: var(--teal); }
+    .article-year-badge {
+      font-size: .75rem; font-weight: 700; color: var(--muted);
+      background: #D8DEE9; padding: .3rem .6rem; border-radius: 4px;
+      white-space: nowrap; align-self: flex-start; margin-top: .1rem;
+    }
+    .article-body { flex: 1; }
+    .article-body h4 { font-size: .93rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+    .article-body p { font-size: .83rem; color: var(--muted); }
+
+    /* ── Awards & Certs ───────────────────────────────────────── */
+    #awards { background: #E5E9F0; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .two-col h3 { font-size: .8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 1rem; }
+    .plain-list { list-style: none; }
+    .plain-list li {
+      padding: .6rem 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem; color: var(--text); line-height: 1.4;
+    }
+    .plain-list li:last-child { border-bottom: none; }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.6);
+      text-align: center; padding: 2rem 1.5rem; font-size: .85rem;
+    }
+    footer a { color: #88C0D0; }
+
+    /* ── Hamburger menu ───────────────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer;
+      padding: 4px; z-index: 200;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(216,222,233,.85); border-radius: 2px;
+      transition: all .25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 58px; left: 0; right: 0;
+      background: rgba(46,52,64,.98); backdrop-filter: blur(8px);
+      padding: 1rem 2rem 1.5rem; z-index: 99; flex-direction: column; gap: .1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(216,222,233,.85); font-size: .9rem; font-weight: 500;
+      letter-spacing: .04em; text-transform: uppercase; padding: .65rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s;
+    }
+    .mobile-menu a:hover { color: #88C0D0; text-decoration: none; }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .about-grid, .two-col { grid-template-columns: 1fr; }
+      nav .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAVIGATION ══════════ -->
+<nav>
+  <span class="nav-brand">Ruben Van Paemel</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#posters">Posters</a></li>
+    <li><a href="#software">Software</a></li>
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+  <a href="#publications" onclick="closeMobileMenu()">Publications</a>
+  <a href="#posters" onclick="closeMobileMenu()">Posters</a>
+  <a href="#software" onclick="closeMobileMenu()">Software</a>
+  <a href="#articles" onclick="closeMobileMenu()">Articles</a>
+  <a href="#awards" onclick="closeMobileMenu()">Awards</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-avatar"><img src="headshot.png" alt="Ruben Van Paemel" /></div>
+    <h1>Ruben Van Paemel</h1>
+    <div class="credentials">MD · PhD</div>
+    <p class="tagline">
+      Pediatrician specialising in hematology &amp; oncology · Cancer genomics, liquid biopsy
+      biomarkers, big-data analysis &amp; artificial intelligence
+    </p>
+<div class="hero-pills">
+      <span class="pill">Pediatric Oncology</span>
+      <span class="pill">Liquid Biopsy</span>
+      <span class="pill">cfDNA Methylome</span>
+      <span class="pill">Clinical Trials</span>
+      <span class="pill">Bioinformatics</span>
+      <span class="pill">R / Python</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#publications" class="btn btn-primary">View Publications</a>
+      <a href="mailto:Ruben.VanPaemel@outlook.com" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <h2>About</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a pediatrician with additional expertise in pediatric hematology and oncology, currently working as a Fellow at <strong>Ghent University Hospital</strong>.
+        </p>
+        <p>
+          My PhD (Research Foundation – Flanders, 2017–2021) focused on <em>expanding the diagnostic
+          toolbox in paediatric oncology</em> through exploration of the cell-free DNA methylome.
+          This work combined wet-lab techniques (plasma preparation, RRBS library prep, qPCR
+          quantification) with large-scale bioinformatics pipelines built in Bash, R, Python and
+          Snakemake on HPC infrastructure.
+        </p>
+        <p>
+          I am passionate about bridging bench-side research and bedside clinical care, and about
+          building open, reproducible data-analysis tools for the scientific community.
+        </p>
+      </div>
+      <div class="contact-card">
+        <h3>Contact &amp; Links</h3>
+        <div class="contact-item">
+          <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:Ruben.VanPaemel@outlook.com">Ruben.VanPaemel@outlook.com</a>
+        </div>
+        <div class="contact-item">
+          <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Ghent University Hospital, Belgium</span>
+        </div>
+        <div class="scholar-stats">
+          <div class="scholar-stat">
+            <div class="scholar-stat-num">1066</div>
+            <div class="scholar-stat-label">Citations</div>
+          </div>
+          <div class="scholar-stat">
+            <div class="scholar-stat-num">12</div>
+            <div class="scholar-stat-label">h-index</div>
+          </div>
+          <div class="scholar-stat">
+            <div class="scholar-stat-num">14</div>
+            <div class="scholar-stat-label">i10-index</div>
+          </div>
+        </div>
+        <p class="scholar-source">Source: <a href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></p>
+        <div class="social-links">
+          <a class="social-btn" href="https://github.com/rmvpaeme" target="_blank" rel="noopener">GitHub</a>
+          <a class="social-btn" href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="social-btn" href="https://orcid.org/0000-0001-7324-3570" target="_blank" rel="noopener">ORCID</a>
+          <a class="social-btn" href="https://www.researchgate.net/profile/Ruben-Van-Paemel" target="_blank" rel="noopener">ResearchGate</a>
+          <a class="social-btn" href="https://www.linkedin.com/in/ruben-van-paemel-81028a401/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="social-btn" href="https://medium.com/@Ruben.VanPaemel" target="_blank" rel="noopener">Medium</a>
+          <a class="social-btn" href="mailto:Ruben.VanPaemel@outlook.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EXPERIENCE & EDUCATION ══════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <h2>Experience &amp; Education</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">▶</div>
+        <div class="tl-date">Oct 2024 – Present</div>
+        <div class="tl-title">Fellow in Pediatric Hematology &amp; Oncology</div>
+        <div class="tl-org">Ghent University Hospital, Ghent, Belgium</div>
+        <div class="tl-body">
+          <ul>
+            <li>Diagnosis and treatment of patients in hematology, oncology and stem cell transplantation</li>
+            <li>Communicating diagnosis, treatment and prognosis to patients and caregivers</li>
+            <li>Management of chemotherapy complications in a multidisciplinary team</li>
+            <li>Leading the medical and paramedical team during on-call weeks</li>
+            <li>Enrolment of patients in phase I/II clinical trials (ICF forms, safety monitoring, adverse event reporting)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x25CF;</div>
+        <div class="tl-date">Sept 2017 – 2021</div>
+        <div class="tl-title">PhD Fellowship</div>
+        <div class="tl-org">Research Foundation – Flanders (FWO)</div>
+        <div class="tl-body">
+          Thesis: <em>"Expanding The Diagnostic Toolbox in Pediatric Oncology: Exploration of the Value of the Cell-Free DNA Methylome."</em><br />
+          Promotor: Prof. dr. B. De Wilde · Co-promotor: Prof. dr. K. De Preter
+          <ul>
+            <li>Patient recruitment, IRB approval, sample processing (plasma prep, DNA isolation, SOP development)</li>
+            <li>DNA and RNA sequencing library preparation; qPCR quantification; capillary electrophoresis QC</li>
+            <li>Large-scale bioinformatics pipelines (Snakemake / HPC); data analysis in Bash, R, R-Shiny, Python</li>
+            <li>Version control with git; development of open-source tools</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x25CF;</div>
+        <div class="tl-date">June 2017 – 2024</div>
+        <div class="tl-title">Residency &amp; Master in Specialist Medicine – Pediatrics</div>
+        <div class="tl-org">Ghent University &amp; AZ Sint-Lucas, Ghent, Belgium</div>
+        <div class="tl-body">
+          Rotations in general pediatrics, NICU, PICU, hematology and oncology (in- &amp; outpatient).
+          Developed two quality-improvement apps for the NICU at UZ Gent:
+          <a href="https://rubenvp.shinyapps.io/bilicurve/" target="_blank" rel="noopener">bilicurve</a> and
+          <a href="https://rubenvp.shinyapps.io/fenton/" target="_blank" rel="noopener">Fenton growth curves</a>.
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x25CF;</div>
+        <div class="tl-date">June 2013 – 2017</div>
+        <div class="tl-title">Master in Medicine — <em>Summa cum laude</em></div>
+        <div class="tl-org">Ghent University</div>
+        <div class="tl-body">
+          Thesis: <em>"Identification of genetic aberrations predisposing to familial Burkitt lymphoma using whole genome sequencing."</em>
+          Promotor: Prof. Dr. G. Laureys
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x25CF;</div>
+        <div class="tl-date">June 2010 – 2013</div>
+        <div class="tl-title">Bachelor in Medicine — <em>Magna cum laude</em></div>
+        <div class="tl-org">Ghent University</div>
+        <div class="tl-body"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PUBLICATIONS ══════════ -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header">
+      <h2>Publications</h2>
+      <p class="subtitle">Co-authored peer-reviewed articles.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="pub-controls">
+      <input class="pub-search" type="search" placeholder="Search by title, author or journal…" id="pubSearch" />
+      <div class="pub-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="original">Original</button>
+        <button class="filter-btn" data-filter="review">Review</button>
+        <button class="filter-btn" data-filter="preprint">Preprint</button>
+        <button class="filter-btn" data-filter="case">Case Series</button>
+      </div>
+    </div>
+
+    <div class="pub-no-results" id="pubNoResults">No publications match your search.</div>
+    <div class="pub-list">
+
+      <!-- 2025 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2025</span>
+          <span class="pub-journal">Nature Communications</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Blood Collection Tube and RNA Purification Method Recommendations for Extracellular RNA Transcriptome Profiling</div>
+        <div class="pub-authors">The exRNAQC Consortium · Jasper Anckaert · Francisco Avila Cobos · Anneleen Decock · Philippe Decruyenaere · Jill Deleu · Katleen De Preter · Olivier De Wever · Jilke De Wilde · Bert Dhondt · Thibaut D'huyvetter · Celine Everaert · Carolina Fierro · Hetty H. Helsmoortel · An Hendrix · Eva Hulstaert · Jan Koster · Scott Kuersten · Tim R. Mercer · Pieter Mestdagh · Annelien Morlion · Nele Nijs · Justine Nuytens · Annouck Philippron · Thomas Piofczyk · Franco Poma-Soto · Kathleen Schoofs · Gary P. Schroth · Olivier Thas · Eveline Vanden Eynde · Jo Vandesompele · Tom Van Maerken · <strong>Ruben Van Paemel</strong> · Kimberly Verniers · Jasper Verwilt · Nurten Yigit</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1038/s41467-025-58607-7" target="_blank" rel="noopener">DOI: 10.1038/s41467-025-58607-7</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="preprint">
+        <div class="pub-meta">
+          <span class="pub-year">2025</span>
+          <span class="pub-journal">Cold Spring Harbor Laboratory (Preprint)</span>
+          <span class="pub-type type-preprint">Preprint</span>
+        </div>
+        <div class="pub-title">A Benchmark of DNA Methylation Deconvolution Methods for Tumoral Fraction Estimation Using DecoNFlow</div>
+        <div class="pub-authors">Edoardo Giuili · Sofie Van de Velde · Sam Kint · Maísa R. Ferro dos Santos · Lotte Cornelli · Sofie Roelandt · Kathleen Schoofs · Renske Imschoot · <strong>Ruben Van Paemel</strong> · Leander Meuris · Celine Everaert · Katleen De Preter</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1101/2025.11.27.688590" target="_blank" rel="noopener">DOI: 10.1101/2025.11.27.688590</a>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2024</span>
+          <span class="pub-journal">Laboratory Investigation</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">A Fast, Affordable and Minimally-Invasive Diagnostic Test for Cancer of Unknown Primary (CUP) Using DNA Methylation Profiling</div>
+        <div class="pub-authors">Jilke De Wilde · <strong>Ruben Van Paemel</strong> · Andries De Koker · Sofie Roelandt · Sofie Van de Velde · Nico Callewaert · Jo Van Dorpe · David Creytens · Bram De Wilde · Katleen De Preter</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1016/j.labinv.2024.102091" target="_blank" rel="noopener">DOI: 10.1016/j.labinv.2024.102091</a>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub-card" data-type="case">
+        <div class="pub-meta">
+          <span class="pub-year">2023</span>
+          <span class="pub-journal">Frontiers in Oncology</span>
+          <span class="pub-type type-case">Case Series</span>
+        </div>
+        <div class="pub-title">Case Series on Clinical Applications of Liquid Biopsy in Pediatric Solid Tumors: Towards Improved Diagnostics and Disease Monitoring</div>
+        <div class="pub-authors">Nina U. Gelineau · Astrid van Barneveld · Atia Samim · Lieke Van Zogchel · Nathalie Lak · Michelle L. Tas · Yvette Matser · Annelies M. C. Mavinkurve-Groothuis · Martine van Grotel · József Zsiros · Natasha K. A. van Eijkelenburg · Rutger R. G. Knops · Roelof van Ewijk · Karin P. S. Langenberg · Ronald De Krijger · Laura S. Hiemcke-Jiwa · <strong>Ruben Van Paemel</strong> · Lotte Cornelli · Katleen De Preter · Bram De Wilde · Ellen Van Der Schoot · Godelieve Tytgat</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.3389/fonc.2023.1209150" target="_blank" rel="noopener">DOI: 10.3389/fonc.2023.1209150</a>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2022</span>
+          <span class="pub-journal">JCO Precision Oncology</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Cell-free DNA as a Diagnostic and Prognostic Biomarker in Pediatric Rhabdomyosarcoma</div>
+        <div class="pub-authors">Nathalie S.M. Lak · Lieke M.J. van Zogchel · Lily Zappeij-Kannegieter · Ahmad Javadi · <strong>Ruben van Paemel</strong> · Charlotte Vandeputte · Katleen De Preter · Bram De Wilde · Mathieu Chicard · Yasmine Iddir · Gudrun Schleiermacher · Olivia Ruhen · Janet Shipley · Marta Fiocco · Johannes H.M. Merks · Max M. van Noesel · C. Ellen van der Schoot · Godelieve A.M. Tytgat · Janine Stutterheim</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1200/PO.22.00113" target="_blank" rel="noopener">DOI: 10.1200/PO.22.00113</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2022</span>
+          <span class="pub-journal">Pediatric Hematology and Oncology</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Whole Genome Sequencing and Inheritance-based Variant Filtering as a Tool for Unraveling Missing Heritability in Pediatric Cancer</div>
+        <div class="pub-authors">Charlotte Derpoorter · <strong>Ruben Van Paemel</strong> · Katrien Vandemeulebroecke · Jolien Vanhooren · Bram De Wilde · Geneviève Laureys · Tim Lammens</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1080/08880018.2022.2101723" target="_blank" rel="noopener">DOI: 10.1080/08880018.2022.2101723</a>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2021</span>
+          <span class="pub-journal">European Journal of Cancer</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">The Feasibility of Using Liquid Biopsies as a Complementary Assay for Copy Number Aberration Profiling in Routinely Collected Paediatric Cancer Patient Samples</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Charlotte Vandeputte · Lennart Raman · Jolien Van Thorre · Leen Willems · Jo Van Dorpe · Malaïka Van Der Linden · Jilke De Wilde · Andries De Koker · Björn Menten · Christine Devalck · Ales Vicha · Marek Grega · Gudrun Schleiermacher · Yasmine Iddir · Mathieu Chicard · Lieke van Zogchel · Janine Stutterheim · Nathalie S.M. Lak · G.A.M. Tytgat · Geneviève Laureys · Frank Speleman · Bram De Wilde · Tim Lammens · Katleen De Preter · Nadine Van Roy</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1016/j.ejca.2021.09.022" target="_blank" rel="noopener">DOI: 10.1016/j.ejca.2021.09.022</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="review">
+        <div class="pub-meta">
+          <span class="pub-year">2021</span>
+          <span class="pub-journal">European Journal of Pediatrics</span>
+          <span class="pub-type type-review">Review</span>
+        </div>
+        <div class="pub-title">Multisystem Inflammatory Syndrome in Children Related to COVID-19: A Systematic Review</div>
+        <div class="pub-authors">Levi Hoste · <strong>Ruben Van Paemel</strong> · Filomeen Haerynck</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1007/s00431-021-03993-5" target="_blank" rel="noopener">DOI: 10.1007/s00431-021-03993-5</a>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2020</span>
+          <span class="pub-journal">Epigenetics</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Genome-wide Study of the Effect of Blood Collection Tubes on the Cell-free DNA Methylome</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Andries De Koker · Christa Caggiano · Annelien Morlion · Pieter Mestdagh · Bram De Wilde · Jo Vandesompele · Katleen De Preter</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1080/15592294.2020.1827714" target="_blank" rel="noopener">DOI: 10.1080/15592294.2020.1827714</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2020</span>
+          <span class="pub-journal">PNAS</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">When DNA Gets in the Way: A Cautionary Note for DNA Contamination in Extracellular RNA-seq Studies</div>
+        <div class="pub-authors">Jasper Verwilt · Wim Trypsteen · <strong>Ruben Van Paemel</strong> · Katleen De Preter · Maria D. Giraldez · Pieter Mestdagh · Jo Vandesompele</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1073/pnas.2001675117" target="_blank" rel="noopener">DOI: 10.1073/pnas.2001675117</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2020</span>
+          <span class="pub-journal">Epigenetics</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Minimally Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA: A Proof-of-Principle Study</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Andries De Koker · Charlotte Vandeputte · Lieke van Zogchel · Tim Lammens · Geneviève Laureys · Jo Vandesompele · Gudrun Schleiermacher · Mathieu Chicard · Nadine Van Roy · Ales Vicha · G.A.M. Tytgat · Nico Callewaert · Katleen De Preter · Bram De Wilde</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1080/15592294.2020.1790950" target="_blank" rel="noopener">DOI: 10.1080/15592294.2020.1790950</a>
+        </div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="pub-card" data-type="review">
+        <div class="pub-meta">
+          <span class="pub-year">2019</span>
+          <span class="pub-journal">European Journal of Pediatrics</span>
+          <span class="pub-type type-review">Review</span>
+        </div>
+        <div class="pub-title">The Pitfalls and Promise of Liquid Biopsies for Diagnosing and Treating Solid Tumors in Children: A Review</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Roos Vlug · Katleen De Preter · Nadine Van Roy · Frank Speleman · Leen Willems · Tim Lammens · Geneviève Laureys · Gudrun Schleiermacher · Godelieve A. M. Tytgat · Kathy Astrahantseff · Hedwig Deubzer · Bram De Wilde</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1007/s00431-019-03545-y" target="_blank" rel="noopener">DOI: 10.1007/s00431-019-03545-y</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2019</span>
+          <span class="pub-journal">Anticancer Research</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Brain Metastasis and Renal Cell Carcinoma: Prognostic Scores Assessment in the Era of Targeted Therapies</div>
+        <div class="pub-authors">Ziad El Ali · Sylvie Rottey · Philippe Barthelemy · Nuria Kotecki · <strong>Ruben Van Paemel</strong> · Daniel Devrient · Ahmad Awada · Thierry Gil · Diane Pannier · Thomas Ryckewaert · Waisse Waissi · Jean-Baptiste Clavier · Nicolas Penel · Tijl Vermassen</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.21873/anticanres.13431" target="_blank" rel="noopener">DOI: 10.21873/anticanres.13431</a>
+        </div>
+      </div>
+
+      <div class="pub-card" data-type="preprint">
+        <div class="pub-meta">
+          <span class="pub-year">2019</span>
+          <span class="pub-journal">bioRxiv (Preprint)</span>
+          <span class="pub-type type-preprint">Preprint</span>
+        </div>
+        <div class="pub-title">A Versatile Method for Circulating Cell-free DNA Methylome Profiling by Reduced Representation Bisulfite Sequencing</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Andries De Koker · Charlotte Vandeputte · Lieke van Zogchel · Tim Lammens · Geneviève Laureys · Jo Vandesompele · Gudrun Schleiermacher · Mathieu Chicard · Nadine Van Roy · Ales Vicha · G.A.M. Tytgat · Nico Callewaert · Katleen De Preter · Bram De Wilde</div>
+        <div class="pub-footer">
+          <span style="font-size:.78rem;color:var(--muted)">bioRxiv, 2019</span>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="pub-card" data-type="original">
+        <div class="pub-meta">
+          <span class="pub-year">2017</span>
+          <span class="pub-journal">American Journal of Medical Genetics Part A</span>
+          <span class="pub-type type-original">Original</span>
+        </div>
+        <div class="pub-title">Confirmation of an ARID2 Defect in SWI/SNF-related Intellectual Disability</div>
+        <div class="pub-authors"><strong>Ruben Van Paemel</strong> · Pauline De Bruyne · Saskia van der Straaten · Marleen D'hondt · Urlien Fränkel · Annelies Dheedene · Björn Menten · Bert Callewaert</div>
+        <div class="pub-footer">
+          <a class="doi-link" href="https://doi.org/10.1002/ajmg.a.38407" target="_blank" rel="noopener">DOI: 10.1002/ajmg.a.38407</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POSTERS ══════════ -->
+<section id="posters">
+  <div class="container">
+    <div class="section-header">
+      <h2>Academic Posters</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="posters-grid">
+
+      <div class="poster-card">
+        <a href="posters/poster_cart.png" target="_blank" rel="noopener">
+          <img src="posters/poster_cart.png" alt="Ten years of CAR-T cell therapy: real-world experience from the Belgian cohort" />
+        </a>
+        <div class="poster-info">
+          <div class="poster-conference">INSPIRED 2025 · Chicago, USA</div>
+          <div class="poster-title">Ten Years of CAR-T Cell Therapy: Real-world Experience from the Belgian Cohort</div>
+          <div class="poster-meta">Retrospective analysis of all paediatric BCP-ALL patients treated with CAR-T cell therapy in Belgium between 2015 and 2025 (n = 61)</div>
+          <a class="poster-download" href="posters/poster_cart.pdf" download>Download PDF &darr;</a>
+        </div>
+      </div>
+
+      <div class="poster-card">
+        <a href="posters/poster_hlh_sarcoma.png" target="_blank" rel="noopener">
+          <img src="posters/poster_hlh_sarcoma.png" alt="Fatal HLH in a 5 year old girl as a complication of secondary histiocytic sarcoma treated with trametinib and chemotherapy" />
+        </a>
+        <div class="poster-info">
+          <div class="poster-conference">CCLS 2025 · Budapest, Hungary</div>
+          <div class="poster-title">Fatal HLH as a Complication of Secondary Histiocytic Sarcoma Treated with Trametinib and Chemotherapy</div>
+          <div class="poster-meta">Case report: 5-year-old girl with T-ALL developing necrotising pleuropneumonia and HLH secondary to histiocytic sarcoma sharing the same TCR rearrangement</div>
+          <a class="poster-download" href="posters/poster_hlh_sarcoma.pdf" download>Download PDF &darr;</a>
+        </div>
+      </div>
+
+      <div class="poster-card">
+        <a href="posters/poster_mycobacterium.png" target="_blank" rel="noopener">
+          <img src="posters/poster_mycobacterium.png" alt="Mycobacterium abscessus as a complication of immunosuppression after allogeneic stem cell transplantation for congenital neutropenia" />
+        </a>
+        <div class="poster-info">
+          <div class="poster-conference">eBMT 2026 · Madrid, Spain</div>
+          <div class="poster-title">Mycobacterium abscessus as a Complication of Immunosuppression after Allogeneic Stem Cell Transplantation for Congenital Neutropenia</div>
+          <div class="poster-meta">Case report: 3-year-old boy with CSF3R mutation, post-alloSCT disseminated M. abscessus infection with pulmonary GvHD</div>
+          <a class="poster-download" href="posters/poster_mycobacterium.pdf" download>Download PDF &darr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SOFTWARE ══════════ -->
+<section id="software">
+  <div class="container">
+    <div class="section-header">
+      <h2>Software &amp; Tools</h2>
+      <p class="subtitle">Open-source projects available on <a href="https://github.com/rmvpaeme?tab=repositories" target="_blank" rel="noopener">GitHub</a></p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="project-list">
+
+      <div class="project-row">
+        <div class="project-row-info">
+          <h3>clinAnnotR <span class="project-lang" style="margin-left:.5rem">R</span></h3>
+          <p>Harmonise treatment and lab values of multiple cases on one figure</p>
+        </div>
+        <div class="project-row-links">
+          <a class="project-link" href="https://github.com/rmvpaeme/clinAnnotR" target="_blank" rel="noopener">GitHub &rarr;</a>
+          <a class="project-link" href="https://rubenvp.shinyapps.io/clinannotr/" target="_blank" rel="noopener">Live app &rarr;</a>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-row-info">
+          <h3>shiny_trials <span class="project-lang" style="margin-left:.5rem">R</span></h3>
+          <p>Interactive EU clinical trial dashboard</p>
+        </div>
+        <div class="project-row-links">
+          <a class="project-link" href="https://github.com/rmvpaeme/shiny_trials" target="_blank" rel="noopener">GitHub &rarr;</a>
+          <a class="project-link" href="https://rubenvp.shinyapps.io/shiny_trials/" target="_blank" rel="noopener">Live app &rarr;</a>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-row-info">
+          <h3>fenton-shiny <span class="project-lang" style="margin-left:.5rem">R</span></h3>
+          <p>Fenton growth curve visualiser with GET support — deployed at UZ Gent NICU</p>
+        </div>
+        <div class="project-row-links">
+          <a class="project-link" href="https://github.com/rmvpaeme/fenton-shiny" target="_blank" rel="noopener">GitHub &rarr;</a>
+          <a class="project-link" href="https://rubenvp.shinyapps.io/fenton/" target="_blank" rel="noopener">Live app &rarr;</a>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-row-info">
+          <h3>BiliCurve <span class="project-lang" style="margin-left:.5rem">R</span></h3>
+          <p>Bilirubin nomogram app for neonatal jaundice — deployed at UZ Gent NICU</p>
+        </div>
+        <div class="project-row-links">
+          <a class="project-link" href="https://rubenvp.shinyapps.io/bilicurve/" target="_blank" rel="noopener">Live app &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="software-footer">More projects on <a href="https://github.com/rmvpaeme?tab=repositories" target="_blank" rel="noopener">GitHub</a></p>
+  </div>
+</section>
+
+<!-- ══════════ ARTICLES ══════════ -->
+<section id="articles">
+  <div class="container">
+    <div class="section-header">
+      <h2>Articles &amp; Blog Posts</h2>
+      <p class="subtitle">Published on <a href="https://medium.com/@Ruben.VanPaemel" target="_blank" rel="noopener">Medium / Towards Data Science</a></p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="articles-list">
+      <div class="article-item">
+        <span class="article-year-badge">2021</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/my-workflow-for-open-and-reproducible-science-as-an-academic-researcher-in-biomedicine-b41eaabcd420" target="_blank" rel="noopener">My Workflow for Open and Reproducible Science as an Academic Researcher in Biomedicine</a></h4>
+          <p>Version control, reproducible pipelines and open-science tools for biomedical researchers.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2020</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/scanning-and-converting-old-black-and-white-film-negatives-to-color-images-using-deepai-5eb9c549d34a" target="_blank" rel="noopener">Scanning and Converting Old Black-and-White Film Negatives to Color Using DeepAI</a></h4>
+          <p>Applying AI colorisation to analogue film photography.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2020</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/dichotomising-continuous-variables-8cf3fdd5de33" target="_blank" rel="noopener">Kaplan Madness: Dichotomising Continuous Variables</a></h4>
+          <p>The statistical pitfalls of binarising continuous predictors in survival analysis.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2019</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/kaplan-meier-curves-c5768e349479" target="_blank" rel="noopener">Kaplan-Meier Curves: An Introduction</a></h4>
+          <p>Primer on survival functions and their interpretation in clinical research.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2018</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/my-journey-into-programming-and-bioinformatics-part-3-224ea62e92e0" target="_blank" rel="noopener">My Journey Into Programming and Bioinformatics: Part 3</a></h4>
+          <p>Advanced bioinformatics workflows and HPC pipelines.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2018</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/my-journey-into-data-science-and-bioinformatics-part-2-34e55d8594d7" target="_blank" rel="noopener">My Journey Into Programming and Bioinformatics: Part 2 — Sequencing Crash Course</a></h4>
+          <p>DNA/RNA sequencing technologies explained for the coding clinician.</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2018</span>
+        <div class="article-body">
+          <h4><a href="https://medium.com/data-science/my-journey-into-data-science-and-bio-informatics-749ece4d8860" target="_blank" rel="noopener">My Journey Into Data Science and Bioinformatics</a></h4>
+          <p>From clinician to coder — first steps into programming and genomics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ AWARDS & CERTS ══════════ -->
+<section id="awards">
+  <div class="container">
+    <div class="section-header">
+      <h2>Awards &amp; Certificates</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Awards</h3>
+        <ul class="plain-list">
+          <li><strong>Award for Oral Presentation</strong> — Oncopoint, 2019</li>
+          <li><strong>Award for Flash Presentation</strong> — Institut Curie, Paris, 2018</li>
+          <li><strong>Best Poster Presentation by Young Investigator</strong> — BeSHG, 2018</li>
+          <li><strong>Award for Storm Session Presentation</strong> — Oncopoint, 2018</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certificates</h3>
+        <ul class="plain-list">
+          <li>Electrocardiography</li>
+          <li>Newborn Life Support (NLS) Provider</li>
+          <li>European Pediatric Advanced Life Support (EPALS) Provider</li>
+          <li>European Board of Paediatricians (EPB)-Certified</li>
+          <li>GCP ICH E6(R3) Certified</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>
+    Ruben Van Paemel, MD/PhD &nbsp;·&nbsp;
+    <a href="mailto:Ruben.VanPaemel@outlook.com">Ruben.VanPaemel@outlook.com</a>
+  </p>
+  <p style="margin-top:.4rem;font-size:.78rem;opacity:.55;">
+    &copy; 2026 Ruben Van Paemel &nbsp;·&nbsp; Last updated April 2026
+  </p>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.querySelector('.nav-hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+
+  // Publication filters + search
+  let activeFilter = 'all';
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const pubCards = document.querySelectorAll('.pub-card');
+  const pubSearch = document.getElementById('pubSearch');
+  const pubNoResults = document.getElementById('pubNoResults');
+
+  function applyFilters() {
+    const query = pubSearch.value.toLowerCase().trim();
+    let visible = 0;
+    pubCards.forEach(card => {
+      const typeMatch = activeFilter === 'all' || card.dataset.type === activeFilter;
+      const textMatch = !query || card.textContent.toLowerCase().includes(query);
+      const show = typeMatch && textMatch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    pubNoResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  pubSearch.addEventListener('input', applyFilters);
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? '#88C0D0' : 'rgba(216,222,233,.78)';
+    });
+  });
+</script>
+</body>
+</html>

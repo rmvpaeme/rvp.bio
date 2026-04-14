@@ -1,0 +1,11 @@
+CLAUDE.md
+.DS_Store
+
+# Ignore all poster files except the ones used in the site
+posters/*
+!posters/poster_cart.png
+!posters/poster_cart.pdf
+!posters/poster_hlh_sarcoma.png
+!posters/poster_hlh_sarcoma.pdf
+!posters/poster_mycobacterium.png
+!posters/poster_mycobacterium.pdf
