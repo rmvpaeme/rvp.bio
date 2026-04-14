@@ -1,5 +1,8 @@
 CLAUDE.md
 .DS_Store
+node_modules/
+package.json
+package-lock.json
 
 # Ignore all poster files except the ones used in the site
 posters/*

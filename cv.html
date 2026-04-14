@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Ruben Van Paemel, MD/PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 11pt; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #2E3440;
+      line-height: 1.55;
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Screen-only toolbar ────────────────────────────── */
+    .cv-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid #D8DEE9;
+    }
+    .cv-toolbar a { font-size: .85rem; color: #5E81AC; text-decoration: none; }
+    .cv-toolbar a:hover { text-decoration: underline; }
+    .cv-print-btn {
+      display: flex; align-items: center; gap: .4rem;
+      background: #2E3440; color: #88C0D0;
+      border: none; border-radius: 6px;
+      padding: .45rem 1rem; font-size: .83rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .cv-print-btn:hover { background: #3B4252; }
+    @media print { .cv-toolbar { display: none; } }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header { margin-bottom: 1.6rem; }
+    header h1 {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 2rem; font-weight: 600; letter-spacing: -.01em;
+      color: #2E3440; line-height: 1.1;
+    }
+    .cv-credentials {
+      font-size: .95rem; color: #4C566A; margin-top: .2rem; font-weight: 500;
+    }
+    .cv-tagline {
+      font-size: .88rem; color: #4C566A; margin-top: .5rem;
+      max-width: 600px; line-height: 1.5;
+    }
+    .cv-contact {
+      display: flex; flex-wrap: wrap; gap: .3rem 1.4rem;
+      margin-top: .9rem; font-size: .82rem; color: #4C566A;
+    }
+    .cv-contact a { color: #5E81AC; text-decoration: none; }
+    .cv-contact a:hover { text-decoration: underline; }
+
+    /* ── Section ────────────────────────────────────────── */
+    section { margin-top: 1.6rem; }
+    section h2 {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #4C566A;
+      border-bottom: 1.5px solid #D8DEE9;
+      padding-bottom: .3rem; margin-bottom: .9rem;
+    }
+
+    /* ── Experience ─────────────────────────────────────── */
+    .cv-entry { display: grid; grid-template-columns: 130px 1fr; gap: .15rem 1rem; margin-bottom: 1rem; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-date { font-size: .78rem; color: #4C566A; padding-top: .05rem; white-space: nowrap; }
+    .cv-body h3 { font-size: .9rem; font-weight: 600; color: #2E3440; }
+    .cv-body .cv-org { font-size: .82rem; color: #4C566A; margin-bottom: .2rem; }
+    .cv-body p, .cv-body ul { font-size: .82rem; color: #3B4252; }
+    .cv-body ul { padding-left: 1rem; margin-top: .2rem; }
+    .cv-body ul li { margin-bottom: .15rem; }
+    .cv-body em { font-style: italic; }
+
+    /* ── Publications ───────────────────────────────────── */
+    .pub-list { list-style: none; }
+    .pub-item {
+      display: grid; grid-template-columns: 24px 1fr;
+      gap: 0 .6rem; margin-bottom: .75rem; font-size: .82rem;
+    }
+    .pub-item:last-child { margin-bottom: 0; }
+    .pub-num { color: #4C566A; font-size: .75rem; padding-top: .05rem; text-align: right; }
+    .pub-item-body { }
+    .pub-item-title { font-weight: 600; color: #2E3440; line-height: 1.4; }
+    .pub-item-authors { color: #4C566A; margin-top: .1rem; line-height: 1.4; }
+    .pub-item-meta { color: #5E81AC; margin-top: .1rem; font-size: .76rem; }
+    .pub-item-meta a { color: #5E81AC; text-decoration: none; }
+    .pub-item-meta a:hover { text-decoration: underline; }
+    .pub-year-group { margin-bottom: 1rem; }
+    .pub-year-group h3 { font-size: .75rem; font-weight: 700; color: #88C0D0; margin-bottom: .5rem; }
+
+    /* ── Simple list ────────────────────────────────────── */
+    .cv-list { list-style: none; }
+    .cv-list li {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: .1rem 1rem; font-size: .82rem; margin-bottom: .4rem;
+    }
+    .cv-list li:last-child { margin-bottom: 0; }
+    .cv-list .li-year { color: #4C566A; }
+    .cv-list .li-body { color: #2E3440; }
+    .cv-list .li-sub { color: #4C566A; font-size: .77rem; }
+
+    /* ── Two column ─────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .two-col h3 { font-size: .77rem; font-weight: 600; color: #2E3440; margin-bottom: .4rem; }
+    .plain-list { list-style: none; }
+    .plain-list li { font-size: .82rem; color: #3B4252; margin-bottom: .3rem; }
+    .plain-list li strong { color: #2E3440; }
+
+    @media print {
+      body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
+      section { margin-top: 1.2rem; }
+      .cv-entry { page-break-inside: avoid; }
+      .pub-year-group { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-toolbar">
+  <a href="index.html">&larr; Back to website</a>
+  <button class="cv-print-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<header>
+  <h1>Ruben Van Paemel</h1>
+  <div class="cv-credentials">MD · PhD</div>
+  <p class="cv-tagline">Pediatrician with expertise in pediatric hematology and oncology, precision medicine, cancer genomics, liquid biopsy biomarkers, big data analysis and artificial intelligence.</p>
+  <div class="cv-contact">
+    <span>📧 <a href="mailto:Ruben.VanPaemel@outlook.com">Ruben.VanPaemel@outlook.com</a></span>
+    <span>Ghent University Hospital, Belgium</span>
+    <span><a href="https://orcid.org/0000-0001-7324-3570" target="_blank" rel="noopener">ORCID 0000-0001-7324-3570</a></span>
+    <span><a href="https://rvp.bio" target="_blank" rel="noopener">rvp.bio</a></span>
+    <span><a href="https://github.com/rmvpaeme" target="_blank" rel="noopener">github.com/rmvpaeme</a></span>
+  </div>
+</header>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section>
+  <h2>Experience &amp; Education</h2>
+
+  <div class="cv-entry">
+    <div class="cv-date">Oct 2024 – Present</div>
+    <div class="cv-body">
+      <h3>Fellow in Pediatric Hematology &amp; Oncology</h3>
+      <div class="cv-org">Ghent University Hospital, Ghent, Belgium</div>
+      <ul>
+        <li>Diagnosis and treatment in hematology, oncology and stem cell transplantation</li>
+        <li>Management of chemotherapy complications in a multidisciplinary team</li>
+        <li>Enrolment of patients in phase I/II clinical trials (ICF, safety monitoring, adverse event reporting)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">Sept 2017 – 2021</div>
+    <div class="cv-body">
+      <h3>PhD Fellowship — Research Foundation Flanders (FWO)</h3>
+      <div class="cv-org">Ghent University, Ghent, Belgium</div>
+      <p><em>Thesis: "Expanding The Diagnostic Toolbox in Pediatric Oncology: Exploration of the Value of the Cell-Free DNA Methylome."</em><br>
+      Promotor: Prof. dr. B. De Wilde · Co-promotor: Prof. dr. K. De Preter</p>
+      <ul>
+        <li>Patient recruitment, IRB approval, sample processing (plasma prep, DNA isolation, SOP development)</li>
+        <li>DNA and RNA sequencing library preparation; qPCR quantification; capillary electrophoresis QC</li>
+        <li>Large-scale bioinformatics pipelines (Snakemake / HPC) in Bash, R, Python</li>
+        <li>Development of open-source bioinformatics tools</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2017 – 2024</div>
+    <div class="cv-body">
+      <h3>Residency &amp; Master in Specialist Medicine – Pediatrics</h3>
+      <div class="cv-org">Ghent University &amp; AZ Sint-Lucas, Ghent, Belgium</div>
+      <p>Rotations in general pediatrics, NICU, PICU, hematology and oncology (in- &amp; outpatient). Developed two quality-improvement apps for the UZ Gent NICU.</p>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2013 – 2017</div>
+    <div class="cv-body">
+      <h3>Master in Medicine — <em>Summa cum laude</em></h3>
+      <div class="cv-org">Ghent University</div>
+      <p><em>Thesis: "Identification of genetic aberrations predisposing to familial Burkitt lymphoma using whole genome sequencing."</em> Promotor: Prof. Dr. G. Laureys</p>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2010 – 2013</div>
+    <div class="cv-body">
+      <h3>Bachelor in Medicine — <em>Magna cum laude</em></h3>
+      <div class="cv-org">Ghent University</div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section>
+  <h2>Publications</h2>
+
+  <div class="pub-year-group">
+    <h3>2025</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">1.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Blood Collection Tube and RNA Purification Method Recommendations for Extracellular RNA Transcriptome Profiling</div>
+          <div class="pub-item-authors">The exRNAQC Consortium · … · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>Nature Communications</em>, 2025 · <a href="https://doi.org/10.1038/s41467-025-58607-7" target="_blank" rel="noopener">DOI: 10.1038/s41467-025-58607-7</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">2.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">A Benchmark of DNA Methylation Deconvolution Methods for Tumoral Fraction Estimation Using DecoNFlow</div>
+          <div class="pub-item-authors">Giuili E · … · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>bioRxiv</em> (Preprint), 2025 · <a href="https://doi.org/10.1101/2025.11.27.688590" target="_blank" rel="noopener">DOI: 10.1101/2025.11.27.688590</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2024</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">3.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">A Fast, Affordable and Minimally-Invasive Diagnostic Test for Cancer of Unknown Primary (CUP) Using DNA Methylation Profiling</div>
+          <div class="pub-item-authors">De Wilde J · <strong>Van Paemel R</strong> · De Koker A · et al.</div>
+          <div class="pub-item-meta"><em>Laboratory Investigation</em>, 2024 · <a href="https://doi.org/10.1016/j.labinv.2024.102091" target="_blank" rel="noopener">DOI: 10.1016/j.labinv.2024.102091</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2023</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">4.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Case Series on Clinical Applications of Liquid Biopsy in Pediatric Solid Tumors</div>
+          <div class="pub-item-authors">Gelineau NU · … · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>Frontiers in Oncology</em>, 2023 · <a href="https://doi.org/10.3389/fonc.2023.1209150" target="_blank" rel="noopener">DOI: 10.3389/fonc.2023.1209150</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2022</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">5.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Cell-free DNA as a Diagnostic and Prognostic Biomarker in Pediatric Rhabdomyosarcoma</div>
+          <div class="pub-item-authors">Lak NSM · van Zogchel LMJ · … · <strong>van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>JCO Precision Oncology</em>, 2022 · <a href="https://doi.org/10.1200/PO.22.00113" target="_blank" rel="noopener">DOI: 10.1200/PO.22.00113</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">6.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Whole Genome Sequencing and Inheritance-based Variant Filtering as a Tool for Unraveling Missing Heritability in Pediatric Cancer</div>
+          <div class="pub-item-authors">Derpoorter C · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>Pediatric Hematology and Oncology</em>, 2022 · <a href="https://doi.org/10.1080/08880018.2022.2101723" target="_blank" rel="noopener">DOI: 10.1080/08880018.2022.2101723</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2021</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">7.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">The Feasibility of Using Liquid Biopsies as a Complementary Assay for Copy Number Aberration Profiling in Routinely Collected Paediatric Cancer Patient Samples</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · Vandeputte C · Raman L · et al.</div>
+          <div class="pub-item-meta"><em>European Journal of Cancer</em>, 2021 · <a href="https://doi.org/10.1016/j.ejca.2021.09.022" target="_blank" rel="noopener">DOI: 10.1016/j.ejca.2021.09.022</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">8.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Multisystem Inflammatory Syndrome in Children Related to COVID-19: A Systematic Review</div>
+          <div class="pub-item-authors">Hoste L · <strong>Van Paemel R</strong> · Haerynck F</div>
+          <div class="pub-item-meta"><em>European Journal of Pediatrics</em>, 2021 · <a href="https://doi.org/10.1007/s00431-021-03993-5" target="_blank" rel="noopener">DOI: 10.1007/s00431-021-03993-5</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2020</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">9.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Genome-wide Study of the Effect of Blood Collection Tubes on the Cell-free DNA Methylome</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · De Koker A · Caggiano C · et al.</div>
+          <div class="pub-item-meta"><em>Epigenetics</em>, 2020 · <a href="https://doi.org/10.1080/15592294.2020.1827714" target="_blank" rel="noopener">DOI: 10.1080/15592294.2020.1827714</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">10.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">When DNA Gets in the Way: A Cautionary Note for DNA Contamination in Extracellular RNA-seq Studies</div>
+          <div class="pub-item-authors">Verwilt J · Trypsteen W · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>PNAS</em>, 2020 · <a href="https://doi.org/10.1073/pnas.2001675117" target="_blank" rel="noopener">DOI: 10.1073/pnas.2001675117</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">11.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Minimally Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA: A Proof-of-Principle Study</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · De Koker A · Vandeputte C · et al.</div>
+          <div class="pub-item-meta"><em>Epigenetics</em>, 2020 · <a href="https://doi.org/10.1080/15592294.2020.1790950" target="_blank" rel="noopener">DOI: 10.1080/15592294.2020.1790950</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2019</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">12.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">The Pitfalls and Promise of Liquid Biopsies for Diagnosing and Treating Solid Tumors in Children: A Review</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · Vlug R · De Preter K · et al.</div>
+          <div class="pub-item-meta"><em>European Journal of Pediatrics</em>, 2019 · <a href="https://doi.org/10.1007/s00431-019-03545-y" target="_blank" rel="noopener">DOI: 10.1007/s00431-019-03545-y</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">13.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Brain Metastasis and Renal Cell Carcinoma: Prognostic Scores Assessment in the Era of Targeted Therapies</div>
+          <div class="pub-item-authors">El Ali Z · … · <strong>Van Paemel R</strong> · et al.</div>
+          <div class="pub-item-meta"><em>Anticancer Research</em>, 2019 · <a href="https://doi.org/10.21873/anticanres.13431" target="_blank" rel="noopener">DOI: 10.21873/anticanres.13431</a></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">14.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">A Versatile Method for Circulating Cell-free DNA Methylome Profiling by Reduced Representation Bisulfite Sequencing</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · De Koker A · Vandeputte C · et al.</div>
+          <div class="pub-item-meta"><em>bioRxiv</em> (Preprint), 2019</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-year-group">
+    <h3>2017</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">15.</span>
+        <div class="pub-item-body">
+          <div class="pub-item-title">Confirmation of an ARID2 Defect in SWI/SNF-related Intellectual Disability</div>
+          <div class="pub-item-authors"><strong>Van Paemel R</strong> · De Bruyne P · van der Straaten S · et al.</div>
+          <div class="pub-item-meta"><em>American Journal of Medical Genetics Part A</em>, 2017 · <a href="https://doi.org/10.1002/ajmg.a.38407" target="_blank" rel="noopener">DOI: 10.1002/ajmg.a.38407</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section>
+  <h2>Presentations</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">2026</span>
+      <div>
+        <div class="li-body">Lymphadenopathy work-up</div>
+        <div class="li-sub">Master of Specialist Medicine – Pediatrics</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Unmasking Familial Hemophagocytic Lymphohistiocytosis type 3: Chronic Disseminated Rubella Infection Following MMR Vaccination <em>(Travel grant)</em></div>
+        <div class="li-sub">eBMT Inborn Error Working Party</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Acute management of sickle cell anemia</div>
+        <div class="li-sub">National Meeting – Pediatrics</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- POSTERS -->
+<section>
+  <h2>Academic Posters</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">2026</span>
+      <div>
+        <div class="li-body">Mycobacterium abscessus as a Complication of Immunosuppression after Allogeneic Stem Cell Transplantation for Congenital Neutropenia</div>
+        <div class="li-sub">eBMT · Madrid, Spain</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Ten Years of CAR-T Cell Therapy: Real-world Experience from the Belgian Cohort</div>
+        <div class="li-sub">INSPIRED · Chicago, USA</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Fatal HLH as a Complication of Secondary Histiocytic Sarcoma Treated with Trametinib and Chemotherapy</div>
+        <div class="li-sub">CCLS · Budapest, Hungary</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- SOFTWARE -->
+<section>
+  <h2>Software &amp; Tools</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">clinAnnotR</span>
+      <div>
+        <div class="li-body">Harmonise treatment and lab values of multiple cases on one figure · R</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/clinAnnotR" target="_blank" rel="noopener">github.com/rmvpaeme/clinAnnotR</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">EU Pediatric Trial Monitor</span>
+      <div>
+        <div class="li-body">Interactive EU clinical trial dashboard · R/Shiny</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/shiny_trials" target="_blank" rel="noopener">github.com/rmvpaeme/shiny_trials</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">fenton-shiny</span>
+      <div>
+        <div class="li-body">Fenton growth curve visualiser — deployed at UZ Gent NICU · R/Shiny</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/fenton-shiny" target="_blank" rel="noopener">github.com/rmvpaeme/fenton-shiny</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">bilicurve-shiny</span>
+      <div>
+        <div class="li-body">Bilirubin nomogram app — deployed at UZ Gent NICU · R/Shiny</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">Stolling</span>
+      <div>
+        <div class="li-body">Interactive overview of the clotting cascade · HTML/JS</div>
+        <div class="li-sub"><a href="https://rmvpaeme.github.io/stolling/index.html" target="_blank" rel="noopener">rmvpaeme.github.io/stolling</a></div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- AWARDS -->
+<section>
+  <h2>Awards &amp; Certificates</h2>
+  <div class="two-col">
+    <div>
+      <h3>Awards</h3>
+      <ul class="plain-list">
+        <li><strong>Award for Oral Presentation</strong> — Oncopoint, 2019</li>
+        <li><strong>Award for Flash Presentation</strong> — Institut Curie, Paris, 2018</li>
+        <li><strong>Best Poster by Young Investigator</strong> — BeSHG, 2018</li>
+        <li><strong>Award for Storm Session Presentation</strong> — Oncopoint, 2018</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Certificates</h3>
+      <ul class="plain-list">
+        <li>Electrocardiography</li>
+        <li>Newborn Life Support (NLS) Provider</li>
+        <li>European Pediatric Advanced Life Support (EPALS) Provider</li>
+        <li>European Board of Paediatricians (EPB)-Certified</li>
+        <li>GCP ICH E6(R3) Certified</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
