@@ -232,6 +232,15 @@
     .pub-search::placeholder { color: var(--muted); }
     .pub-no-results { text-align: center; color: var(--muted); padding: 2rem 0; font-size: .9rem; display: none; }
     .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-list.collapsed .pub-card:nth-child(n+4) { display: none; }
+    .pub-toggle {
+      display: block; margin: 1.2rem auto 0;
+      background: none; border: 1px solid var(--border);
+      border-radius: 6px; padding: .5rem 1.4rem;
+      font-size: .88rem; color: var(--blue); cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .pub-toggle:hover { border-color: var(--blue); color: var(--navy); }
     .pub-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.3rem 1.5rem;
@@ -620,7 +629,7 @@
     </div>
 
     <div class="pub-no-results" id="pubNoResults">No publications match your search.</div>
-    <div class="pub-list">
+    <div class="pub-list collapsed" id="pubList">
 
       <!-- 2025 -->
       <div class="pub-card" data-type="original">
@@ -826,6 +835,7 @@
       </div>
 
     </div>
+    <button class="pub-toggle" id="pubToggle">Show all publications</button>
   </div>
 </section>
 
@@ -1128,6 +1138,23 @@
   });
 
   pubSearch.addEventListener('input', applyFilters);
+
+  // Publication collapse toggle
+  const pubList   = document.getElementById('pubList');
+  const pubToggle = document.getElementById('pubToggle');
+  pubToggle.addEventListener('click', () => {
+    const collapsed = pubList.classList.toggle('collapsed');
+    pubToggle.textContent = collapsed ? 'Show all publications' : 'Show fewer';
+  });
+  // Expand automatically when filtering
+  pubSearch.addEventListener('input', () => {
+    pubList.classList.remove('collapsed');
+    pubToggle.textContent = 'Show fewer';
+  });
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    pubList.classList.remove('collapsed');
+    pubToggle.textContent = 'Show fewer';
+  }));
 
   // OpenAlex metrics
   fetch('https://api.openalex.org/authors/https://orcid.org/0000-0001-7324-3570')
