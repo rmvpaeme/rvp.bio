@@ -262,6 +262,12 @@
       display: inline-flex; align-items: center; gap: .3rem;
     }
     .doi-link:hover { color: var(--blue); }
+    .cite-badge {
+      font-size: .72rem; font-weight: 600;
+      color: var(--muted); background: #D8DEE9;
+      padding: .15rem .5rem; border-radius: 4px;
+      white-space: nowrap;
+    }
     .pub-type {
       font-size: .72rem; padding: .15rem .5rem; border-radius: 4px;
       font-weight: 500;
@@ -897,6 +903,18 @@
         </div>
       </div>
 
+
+      <div class="poster-card">
+        <a href="posters/2019_SIOP.png" target="_blank" rel="noopener">
+          <img src="posters/2019_SIOP.png" alt="Minimally-Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA" />
+        </a>
+        <div class="poster-info">
+          <div class="poster-conference">SIOP 2019 · Lyon, France</div>
+          <div class="poster-title">Minimally-Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA: A Proof-of-Principle Study</div>
+          <a class="poster-download" href="posters/2019_SIOP.pdf" download>Download PDF &darr;</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -928,6 +946,13 @@
         <div class="article-body">
           <h4>Acute management of sickle cell anemia</h4>
           <p>National Meeting - Pediatrics</p>
+        </div>
+      </div>
+      <div class="article-item">
+        <span class="article-year-badge">2019</span>
+        <div class="article-body">
+          <h4>Non-invasive classification of pediatric tumor types using reduced representation bisulfite sequencing of cell-free DNA: a proof-of-principle study</h4>
+          <p>EACR-ESMO Joint Conference on Liquid Biopsies · Bergamo, Italy</p>
         </div>
       </div>
     </div>
@@ -1173,6 +1198,35 @@
     pubList.classList.remove('collapsed');
     pubToggle.textContent = 'Show fewer';
   }));
+
+  // Per-paper citation counts from OpenAlex
+  (async () => {
+    const cards = document.querySelectorAll('.pub-card');
+    const doiMap = {}; // doi → pub-footer element
+    cards.forEach(card => {
+      const link = card.querySelector('.doi-link');
+      if (!link) return;
+      const doi = link.href.replace('https://doi.org/', '');
+      doiMap[doi] = card.querySelector('.pub-footer');
+    });
+    const dois = Object.keys(doiMap);
+    if (!dois.length) return;
+    const filter = 'doi:' + dois.join('|');
+    try {
+      const res = await fetch(`https://api.openalex.org/works?filter=${encodeURIComponent(filter)}&per_page=50&select=doi,cited_by_count`);
+      const data = await res.json();
+      data.results.forEach(work => {
+        const doi = work.doi?.replace('https://doi.org/', '');
+        if (!doi || !doiMap[doi]) return;
+        if (work.cited_by_count > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cite-badge';
+          badge.textContent = `${work.cited_by_count} citations`;
+          doiMap[doi].appendChild(badge);
+        }
+      });
+    } catch (e) {}
+  })();
 
   // OpenAlex metrics
   fetch('https://api.openalex.org/authors/https://orcid.org/0000-0001-7324-3570')
