@@ -38,19 +38,23 @@
     @media print { .cv-toolbar { display: none; } }
 
     /* ── Header ─────────────────────────────────────────── */
-    header { margin-bottom: 1.6rem; }
+    header {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.1rem; border-bottom: 1.5px solid #D8DEE9;
+    }
     header h1 {
       font-family: 'Crimson Pro', Georgia, serif;
       font-size: 2rem; font-weight: 600; letter-spacing: -.01em;
       color: #2E3440; line-height: 1.1;
     }
     .cv-tagline {
-      font-size: .88rem; color: #4C566A; margin-top: .5rem;
-      max-width: 620px; line-height: 1.5;
+      font-size: .86rem; color: #4C566A; margin-top: .45rem;
+      max-width: 640px; line-height: 1.5;
     }
     .cv-contact {
-      display: flex; flex-wrap: wrap; gap: .35rem 1.6rem;
-      margin-top: .9rem; font-size: .82rem; color: #4C566A;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: .3rem .5rem; margin-top: .7rem;
+      font-size: .8rem; color: #4C566A;
     }
     .cv-contact span { display: flex; align-items: center; gap: .35rem; }
     .cv-contact a { color: #4C566A; text-decoration: none; }
@@ -134,20 +138,28 @@
   <p class="cv-tagline">Pediatrician with experience in pediatric oncology, hematology and precision medicine, with a PhD in cancer genomics, liquid biopsy biomarkers, big data analysis and artificial intelligence.</p>
   <div class="cv-contact">
     <span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <a href="mailto:Ruben.VanPaemel@outlook.com">Ruben.VanPaemel@outlook.com</a>
     </span>
     <span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
       Ghent University Hospital, Belgium
     </span>
     <span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       <a href="https://rvp.bio" target="_blank" rel="noopener">rvp.bio</a>
     </span>
     <span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
       <a href="https://github.com/rmvpaeme" target="_blank" rel="noopener">github.com/rmvpaeme</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <a href="https://www.linkedin.com/in/ruben-van-paemel-81028a401/" target="_blank" rel="noopener">LinkedIn</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <a href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
     </span>
   </div>
 </header>
