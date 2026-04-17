@@ -384,9 +384,12 @@
       transform: none;
     }
 
-    /* ── CV download button ──────────────────────────────────── */
-    .cv-download-btn {
+    /* ── CV download buttons ─────────────────────────────────── */
+    .cv-download-group {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 500;
+      display: flex; flex-direction: row; align-items: center; gap: .5rem;
+    }
+    .cv-download-btn {
       display: flex; align-items: center; gap: .5rem;
       background: var(--navy); color: var(--teal);
       border: 1px solid var(--teal); border-radius: 8px;
@@ -396,6 +399,11 @@
       transition: background .2s, color .2s;
     }
     .cv-download-btn:hover { background: var(--teal); color: var(--navy); }
+    .cv-download-btn.lite {
+      font-size: .83rem; padding: .6rem 1.1rem;
+      background: transparent; color: var(--teal);
+    }
+    .cv-download-btn.lite:hover { background: var(--teal); color: var(--navy); }
 
     /* ── Footer ───────────────────────────────────────────────── */
     footer {
@@ -1193,10 +1201,16 @@
   </p>
 </footer>
 
-<a class="cv-download-btn" href="cv.pdf" download="CV_Ruben_Van_Paemel.pdf" aria-label="Download CV">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  Download CV
-</a>
+<div class="cv-download-group">
+  <a class="cv-download-btn" href="cv.pdf" download="CV_Ruben_Van_Paemel.pdf" aria-label="Download CV">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download CV
+  </a>
+  <a class="cv-download-btn lite" href="cv-lite.pdf" download="CV_lite_Ruben_Van_Paemel.pdf" aria-label="Download CV (lite)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    CV (lite)
+  </a>
+</div>
 
 <script>
   // Hamburger menu

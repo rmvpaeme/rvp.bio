@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV (lite) — Ruben Van Paemel, MD/PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 11pt; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #2E3440;
+      line-height: 1.55;
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Screen-only toolbar ────────────────────────────── */
+    .cv-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid #D8DEE9;
+    }
+    .cv-toolbar a { font-size: .85rem; color: #5E81AC; text-decoration: none; }
+    .cv-toolbar a:hover { text-decoration: underline; }
+    .cv-print-btn {
+      display: flex; align-items: center; gap: .4rem;
+      background: #2E3440; color: #88C0D0;
+      border: none; border-radius: 6px;
+      padding: .45rem 1rem; font-size: .83rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .cv-print-btn:hover { background: #3B4252; }
+    @media print { .cv-toolbar { display: none; } }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.1rem; border-bottom: 1.5px solid #D8DEE9;
+    }
+    header h1 {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 2rem; font-weight: 600; letter-spacing: -.01em;
+      color: #2E3440; line-height: 1.1;
+    }
+    .cv-tagline {
+      font-size: .86rem; color: #4C566A; margin-top: .45rem; text-align: justify;
+      max-width: 640px; line-height: 1.5;
+    }
+    .cv-contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: .3rem .5rem; margin-top: .7rem;
+      font-size: .8rem; color: #4C566A;
+    }
+    .cv-contact span { display: flex; align-items: center; gap: .35rem; }
+    .cv-contact a { color: #4C566A; text-decoration: none; }
+    .cv-contact a:hover { text-decoration: underline; color: #5E81AC; }
+
+    /* ── Section ────────────────────────────────────────── */
+    section { margin-top: 1.6rem; }
+    section h2 {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #4C566A;
+      border-bottom: 1.5px solid #D8DEE9;
+      padding-bottom: .3rem; margin-bottom: .9rem;
+    }
+
+    /* ── Experience ─────────────────────────────────────── */
+    .cv-entry { display: grid; grid-template-columns: 130px 1fr; gap: .15rem 1rem; margin-bottom: 1rem; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-date { font-size: .78rem; color: #4C566A; padding-top: .05rem; white-space: nowrap; }
+    .cv-body h3 { font-size: .9rem; font-weight: 600; color: #2E3440; }
+    .cv-body .cv-org { font-size: .82rem; color: #4C566A; margin-bottom: .2rem; }
+    .cv-body p, .cv-body ul { font-size: .82rem; color: #3B4252; text-align: justify; }
+    .cv-body ul { padding-left: 1rem; margin-top: .2rem; }
+    .cv-body ul li { margin-bottom: .15rem; text-align: justify; }
+    .cv-body em { font-style: italic; }
+
+    /* ── Selected publications ──────────────────────────── */
+    .pub-narrative-item { margin-bottom: 1.2rem; }
+    .pub-narrative-item:last-child { margin-bottom: 0; }
+    .pub-narrative-title {
+      font-size: .88rem; font-weight: 600; color: #2E3440;
+      line-height: 1.4; margin-bottom: .2rem;
+    }
+    .pub-narrative-meta {
+      font-size: .76rem; color: #5E81AC; margin-bottom: .45rem;
+    }
+    .pub-narrative-meta a { color: #5E81AC; text-decoration: none; }
+    .pub-narrative-meta a:hover { text-decoration: underline; }
+    .pub-narrative-body {
+      font-size: .82rem; color: #3B4252; line-height: 1.6; text-align: justify;
+    }
+    .pub-full-note {
+      margin-top: 1rem; font-size: .78rem; color: #4C566A;
+      border-top: 1px solid #D8DEE9; padding-top: .7rem;
+    }
+    .pub-full-note a { color: #5E81AC; text-decoration: none; }
+    .pub-full-note a:hover { text-decoration: underline; }
+
+    /* ── Simple list ────────────────────────────────────── */
+    .cv-list { list-style: none; }
+    .cv-list li {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: .1rem 1rem; font-size: .82rem; margin-bottom: .4rem;
+    }
+    .cv-list li:last-child { margin-bottom: 0; }
+    .cv-list .li-year { color: #4C566A; }
+    .cv-list .li-body { color: #2E3440; text-align: justify; }
+    .cv-list .li-sub { color: #4C566A; font-size: .77rem; }
+
+    /* ── Two column ─────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .two-col h3 { font-size: .77rem; font-weight: 600; color: #2E3440; margin-bottom: .4rem; }
+    .plain-list { list-style: none; }
+    .plain-list li { font-size: .82rem; color: #3B4252; margin-bottom: .3rem; text-align: justify; }
+    .plain-list li strong { color: #2E3440; }
+
+    @media print {
+      body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
+      section { margin-top: 1.2rem; }
+      .cv-entry { page-break-inside: avoid; }
+      .pub-narrative-item { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-toolbar">
+  <a href="index.html">&larr; Back to website</a>
+  <button class="cv-print-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<header>
+  <h1>Ruben Van Paemel, MD/PhD</h1>
+  <p class="cv-tagline">Pediatrician with experience in pediatric oncology, hematology and precision medicine, with a PhD in cancer genomics, liquid biopsy biomarkers, big data analysis and artificial intelligence.</p>
+  <div class="cv-contact">
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <a href="mailto:Ruben.VanPaemel@outlook.com">Ruben.VanPaemel@outlook.com</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Ghent University Hospital, Belgium
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <a href="https://rvp.bio" target="_blank" rel="noopener">rvp.bio</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <a href="https://github.com/rmvpaeme" target="_blank" rel="noopener">github.com/rmvpaeme</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <a href="https://www.linkedin.com/in/ruben-van-paemel-81028a401/" target="_blank" rel="noopener">LinkedIn</a>
+    </span>
+    <span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <a href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> · h-index 12 · 1,066 citations
+    </span>
+  </div>
+</header>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section>
+  <h2>Experience &amp; Education</h2>
+
+  <div class="cv-entry">
+    <div class="cv-date">Oct 2024 – Present</div>
+    <div class="cv-body">
+      <h3>Fellow in Pediatric Hematology &amp; Oncology</h3>
+      <div class="cv-org">Ghent University Hospital, Ghent, Belgium</div>
+      <ul>
+        <li>Diagnosis and treatment of patients in hematology, oncology and stem cell transplantation</li>
+        <li>Communicating diagnosis, treatment and prognosis to patients and caregivers</li>
+        <li>Management of complications of chemotherapy, CAR-T therapy, bone marrow transplantation, cancer and surgery in a multidisciplinary team</li>
+        <li>Leading the medical and paramedical team during on-call weeks</li>
+        <li>Enrolment of patients in phase I/II clinical trials (ICF, safety monitoring, adverse event reporting)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2017 – 2024</div>
+    <div class="cv-body">
+      <h3>Residency &amp; Master in Specialist Medicine – Pediatrics</h3>
+      <div class="cv-org">Ghent University &amp; AZ Sint-Lucas, Ghent, Belgium</div>
+      <p>7-year specialist training programme covering general pediatrics, neonatology (NICU), pediatric intensive care (PICU), and pediatric hematology &amp; oncology (in- and outpatient). Gained proficiency in general pediatrics, neonatal resuscitation, critical care management, coordination of oncology follow-up.</p>
+      <ul>
+        <li>Developed and deployed two clinical decision-support apps in the UZ Gent NICU: bilicurve (bilirubin nomogram) and Fenton growth curves (premature infant growth monitoring)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">2020 – 2021</div>
+    <div class="cv-body">
+      <h3>Student Supervision</h3>
+      <div class="cv-org">Ghent University</div>
+      <ul>
+        <li><em>"Computational deconvolution of the methylation signal of heterogeneous mixtures: A benchmarking study"</em> — Master of Bioinformatics, 2021</li>
+        <li><em>"Deconvolution of Cell-free DNA methylation in Pediatric Cancer"</em> — Master of Bioinformatics, 2021</li>
+        <li><em>"Methylation Calling and Tumor Classification from cfDNA of Pediatric and Adult Cancer types"</em> — Design Project Bioinformatics, 2020</li>
+        <li>Jury member: <em>"Liquid biopsy analysis in neuroblastoma patients"</em> — Master of Biomedical Sciences, 2020</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">2017 – 2018</div>
+    <div class="cv-body">
+      <h3>PhD Courses &amp; Training</h3>
+      <div class="cv-org">Various institutions</div>
+      <ul>
+        <li>Computational Systems Biology in Cancer — Institut Curie, France, 2018</li>
+        <li>Advanced Academic English Writing Course — Doctoral Schools, Ghent University, 2018</li>
+        <li>Introduction to Deep Learning and Machine Learning — Ghent University &amp; Jülich Supercomputing Center, 2017</li>
+        <li>Digital Droplet PCR Course — Doctoral Schools, Ghent University, 2017</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">Sept 2017 – 2021</div>
+    <div class="cv-body">
+      <h3>PhD Fellowship — Research Foundation Flanders (FWO)</h3>
+      <div class="cv-org">Ghent University, Ghent, Belgium</div>
+      <p><em>Thesis: "Expanding The Diagnostic Toolbox in Pediatric Oncology: Exploration of the Value of the Cell-Free DNA Methylome."</em><br>
+      Promotor: Prof. dr. B. De Wilde · Co-promotor: Prof. dr. K. De Preter</p>
+      <ul>
+        <li>Patient recruitment, IRB approval, sample processing (plasma prep, DNA isolation, SOP development)</li>
+        <li>DNA and RNA sequencing library preparation; qPCR quantification; capillary electrophoresis QC</li>
+        <li>Large-scale bioinformatics pipelines (Snakemake / HPC) in Bash, R, Python</li>
+        <li>Development of open-source bioinformatics tools</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2013 – 2017</div>
+    <div class="cv-body">
+      <h3>Master in Medicine — <em>Summa cum laude</em></h3>
+      <div class="cv-org">Ghent University</div>
+      <p><em>Thesis: "Identification of genetic aberrations predisposing to familial Burkitt lymphoma using whole genome sequencing."</em> Promotor: Prof. Dr. G. Laureys</p>
+    </div>
+  </div>
+
+  <div class="cv-entry">
+    <div class="cv-date">June 2010 – 2013</div>
+    <div class="cv-body">
+      <h3>Bachelor in Medicine — <em>Magna cum laude</em></h3>
+      <div class="cv-org">Ghent University</div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED PUBLICATIONS -->
+<section>
+  <h2>Selected Publications</h2>
+
+  <div class="pub-narrative-item">
+    <div class="pub-narrative-title">Minimally Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA: A Proof-of-Principle Study</div>
+    <div class="pub-narrative-meta"><em>Epigenetics</em>, 2020 · <a href="https://doi.org/10.1080/15592294.2020.1790950" target="_blank" rel="noopener">DOI: 10.1080/15592294.2020.1790950</a></div>
+    <div class="pub-narrative-body">This was the first manuscript from my PhD research. As a physician by training, I had not acquired the skills needed to tackle this project through clinical education alone. Through a combination of self-directed learning, formal courses, and mentorship from colleagues, I developed both laboratory skills (blood and plasma processing, DNA isolation, DNA sequencing) and computational skills (programming, statistics, and building a machine learning classifier using publicly available datasets). This manuscript is the culmination of all these acquired skills.</div>
+  </div>
+
+  <div class="pub-narrative-item">
+    <div class="pub-narrative-title">Blood Collection Tube and RNA Purification Method Recommendations for Extracellular RNA Transcriptome Profiling</div>
+    <div class="pub-narrative-meta">The exRNAQC Consortium · <em>Nature Communications</em>, 2025 · <a href="https://doi.org/10.1038/s41467-025-58607-7" target="_blank" rel="noopener">DOI: 10.1038/s41467-025-58607-7</a></div>
+    <div class="pub-narrative-body">During my PhD, I contributed to a large-scale quality study spanning nearly a decade (first conceptualized in 2016, published in 2025). My role was twofold: as a physician, I was responsible for selecting, recruiting, obtaining informed consent from, and collecting blood from dozens of healthy volunteers. As a researcher, I processed blood samples through to RNA and performed data analysis and conceptualization of quality control parameters within a multidisciplinary team of bioinformaticians. Under the supervision of Prof. Jo Vandesompele, we published this study under the "exRNAQC Consortium" with authors listed alphabetically, to clearly reflect the collaborative nature of the work.</div>
+  </div>
+
+  <div class="pub-narrative-item">
+    <div class="pub-narrative-title">Multisystem Inflammatory Syndrome in Children Related to COVID-19: A Systematic Review</div>
+    <div class="pub-narrative-meta">Hoste L* · <strong>Van Paemel R*</strong> · Haerynck F &nbsp;(*&thinsp;shared first authorship) · <em>European Journal of Pediatrics</em>, 2021 · <a href="https://doi.org/10.1007/s00431-021-03993-5" target="_blank" rel="noopener">DOI: 10.1007/s00431-021-03993-5</a></div>
+    <div class="pub-narrative-body">My PhD ran from 2017 to 2021, with a substantial portion coinciding with the COVID-19 pandemic and lockdown. The lockdown also created new opportunities: shortly after the onset of the pandemic, a novel syndrome was observed in children — multisystem inflammatory syndrome in children (MIS-C). With the trajectory and implications of MIS-C still unclear, my co-authors and I rapidly conceptualized and submitted this systematic review, with the first draft ready for submission within four weeks. This is currently my most-cited manuscript. It demonstrates my ability to work effectively in multidisciplinary teams and reflects the transferable skills I acquired alongside domain-specific research during my doctorate.</div>
+  </div>
+
+  <div class="pub-narrative-item">
+    <div class="pub-narrative-title">EU Pediatric Trial Monitor</div>
+    <div class="pub-narrative-meta"><a href="https://rubenvp.shinyapps.io/shiny_trials/" target="_blank" rel="noopener">rubenvp.shinyapps.io/shiny_trials</a></div>
+    <div class="pub-narrative-body">I am currently involved in a project to develop an interactive dashboard for clinical trials in children, linking the right patient to the most applicable study.</div>
+  </div>
+
+  <p class="pub-full-note">Full publication list (15 papers, h-index 12, 1,066 citations) available at <a href="https://rvp.bio" target="_blank" rel="noopener">rvp.bio</a> and <a href="https://scholar.google.be/citations?user=1L29hLsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+</section>
+
+<!-- PRESENTATIONS -->
+<section>
+  <h2>Presentations</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">2026</span>
+      <div>
+        <div class="li-body">Lymphadenopathy work-up</div>
+        <div class="li-sub">Master of Specialist Medicine – Pediatrics</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Unmasking Familial Hemophagocytic Lymphohistiocytosis type 3: Chronic Disseminated Rubella Infection Following MMR Vaccination <em>(Travel grant)</em></div>
+        <div class="li-sub">eBMT Inborn Error Working Party</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Acute management of sickle cell anemia</div>
+        <div class="li-sub">National Meeting - Pediatrics</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2020</span>
+      <div>
+        <div class="li-body">Liquid Biopsies: ready for prospective evaluation</div>
+        <div class="li-sub">SIOPEN Meeting · September 2020</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2019</span>
+      <div>
+        <div class="li-body">Non-invasive classification of pediatric tumor types using reduced representation bisulfite sequencing of cell-free DNA: a proof-of-principle study</div>
+        <div class="li-sub">EACR-ESMO Joint Conference on Liquid Biopsies · Bergamo, Italy</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2019</span>
+      <div>
+        <div class="li-body">Precision Oncology Masterclass</div>
+        <div class="li-sub">Master of Biomedical Sciences · Ghent University · November 2019</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- POSTERS -->
+<section>
+  <h2>Academic Posters</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">2026</span>
+      <div>
+        <div class="li-body">Mycobacterium abscessus as a Complication of Immunosuppression after Allogeneic Stem Cell Transplantation for Congenital Neutropenia</div>
+        <div class="li-sub">eBMT · Madrid, Spain</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Ten Years of CAR-T Cell Therapy: Real-world Experience from the Belgian Cohort</div>
+        <div class="li-sub">INSPIRED · Chicago, USA</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2025</span>
+      <div>
+        <div class="li-body">Fatal HLH as a Complication of Secondary Histiocytic Sarcoma Treated with Trametinib and Chemotherapy</div>
+        <div class="li-sub">CCLS · Budapest, Hungary</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">2019</span>
+      <div>
+        <div class="li-body">Minimally-Invasive Classification of Pediatric Solid Tumors Using Reduced Representation Bisulfite Sequencing of Cell-free DNA: A Proof-of-Principle Study</div>
+        <div class="li-sub">SIOP 2019 · Lyon, France</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- SOFTWARE -->
+<section>
+  <h2>Software &amp; Tools</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="li-year">clinAnnotR</span>
+      <div>
+        <div class="li-body">Harmonise treatment and lab values of multiple cases on one figure · R</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/clinAnnotR" target="_blank" rel="noopener">github.com/rmvpaeme/clinAnnotR</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">EU Pediatric Trial Monitor</span>
+      <div>
+        <div class="li-body">Interactive EU clinical trial dashboard · R/Shiny</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/shiny_trials" target="_blank" rel="noopener">github.com/rmvpaeme/shiny_trials</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">fenton-shiny</span>
+      <div>
+        <div class="li-body">Fenton growth curve visualiser — deployed at UZ Gent NICU · R/Shiny</div>
+        <div class="li-sub"><a href="https://github.com/rmvpaeme/fenton-shiny" target="_blank" rel="noopener">github.com/rmvpaeme/fenton-shiny</a></div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">bilicurve-shiny</span>
+      <div>
+        <div class="li-body">Bilirubin nomogram app — deployed at UZ Gent NICU · R/Shiny</div>
+      </div>
+    </li>
+    <li>
+      <span class="li-year">Stolling</span>
+      <div>
+        <div class="li-body">Interactive overview of the clotting cascade · HTML/JS</div>
+        <div class="li-sub"><a href="https://rmvpaeme.github.io/stolling/index.html" target="_blank" rel="noopener">rmvpaeme.github.io/stolling</a></div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- AWARDS -->
+<section>
+  <h2>Awards &amp; Certificates</h2>
+  <div class="two-col">
+    <div>
+      <h3>Awards</h3>
+      <ul class="plain-list">
+        <li><strong>Award for Oral Presentation</strong> — Oncopoint, 2019</li>
+        <li><strong>Award for Flash Presentation</strong> — Institut Curie, Paris, 2018</li>
+        <li><strong>Best Poster by Young Investigator</strong> — BeSHG, 2018</li>
+        <li><strong>Award for Storm Session Presentation</strong> — Oncopoint, 2018</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Certificates</h3>
+      <ul class="plain-list">
+        <li>Electrocardiography</li>
+        <li>Newborn Life Support (NLS) Provider</li>
+        <li>European Pediatric Advanced Life Support (EPALS) Provider</li>
+        <li>European Board of Paediatricians (EPB)-Certified</li>
+        <li><strong>GCP ICH E6(R3) Certified</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -5,18 +5,25 @@ const path = require('path');
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
-  const page = await browser.newPage();
 
-  const filePath = `file://${path.resolve(__dirname, 'cv.html')}`;
-  await page.goto(filePath, { waitUntil: 'networkidle0' });
-
-  await page.pdf({
-    path: 'cv.pdf',
+  const pdfOptions = {
     format: 'A4',
     margin: { top: '1.8cm', bottom: '1.8cm', left: '2cm', right: '2cm' },
     printBackground: false
-  });
+  };
+
+  const files = [
+    { html: 'cv.html',      pdf: 'cv.pdf' },
+    { html: 'cv-lite.html', pdf: 'cv-lite.pdf' },
+  ];
+
+  for (const { html, pdf } of files) {
+    const page = await browser.newPage();
+    await page.goto(`file://${path.resolve(__dirname, html)}`, { waitUntil: 'networkidle0' });
+    await page.pdf({ ...pdfOptions, path: pdf });
+    await page.close();
+    console.log(`${pdf} generated`);
+  }
 
   await browser.close();
-  console.log('cv.pdf generated');
 })();
