@@ -121,30 +121,47 @@
     .plain-list li strong { color: #2E3440; }
 
     @media print {
-      /* Local Lora (static WOFF2, non-variable) — avoids Puppeteer's broken
-         ToUnicode subsetting for Google Fonts variable fonts */
+      /* Local static WOFF2 files — avoids Puppeteer's broken ToUnicode
+         subsetting for Google Fonts variable fonts */
       @font-face {
-        font-family: 'Lora';
+        font-family: 'Inter';
         font-style: normal; font-weight: 400;
-        src: url('fonts/Lora-Regular.woff2') format('woff2');
+        src: url('fonts/Inter-Regular.woff2') format('woff2');
       }
       @font-face {
-        font-family: 'Lora';
+        font-family: 'Inter';
+        font-style: normal; font-weight: 500;
+        src: url('fonts/Inter-Medium.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
         font-style: normal; font-weight: 600;
-        src: url('fonts/Lora-SemiBold.woff2') format('woff2');
+        src: url('fonts/Inter-SemiBold.woff2') format('woff2');
       }
       @font-face {
-        font-family: 'Lora';
+        font-family: 'Inter';
+        font-style: normal; font-weight: 700;
+        src: url('fonts/Inter-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Crimson Pro';
+        font-style: normal; font-weight: 400;
+        src: url('fonts/CrimsonPro-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Crimson Pro';
+        font-style: normal; font-weight: 600;
+        src: url('fonts/CrimsonPro-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Crimson Pro';
         font-style: italic; font-weight: 400;
-        src: url('fonts/Lora-Italic.woff2') format('woff2');
+        src: url('fonts/CrimsonPro-Italic.woff2') format('woff2');
       }
       @font-face {
-        font-family: 'Lora';
+        font-family: 'Crimson Pro';
         font-style: italic; font-weight: 600;
-        src: url('fonts/Lora-SemiBoldItalic.woff2') format('woff2');
-      }
-      *, body {
-        font-family: 'Lora', Georgia, serif !important;
+        src: url('fonts/CrimsonPro-SemiBoldItalic.woff2') format('woff2');
       }
 
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
