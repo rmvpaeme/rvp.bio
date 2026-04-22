@@ -116,6 +116,15 @@
     .plain-list li strong { color: #2E3440; }
 
     @media print {
+      /* Disable ligatures — Inter ligature glyphs lack correct ToUnicode mapping
+         in Puppeteer-generated PDFs, causing copy-paste to break "ti", "ll", etc. */
+      * {
+        font-variant-ligatures: none;
+        font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
+        -webkit-font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
+        text-rendering: optimizeSpeed;
+      }
+
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
       section { margin-top: 1.2rem; }
 
