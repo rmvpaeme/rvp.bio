@@ -116,13 +116,30 @@
     .plain-list li strong { color: #2E3440; }
 
     @media print {
-      /* Use system fonts for print — avoids Puppeteer's broken ToUnicode glyph
-         subsetting for Google Fonts, which garbles copy-paste from the PDF */
-      *, body {
-        font-family: Arial, Helvetica, sans-serif !important;
+      /* Local Lora (static WOFF2, non-variable) — avoids Puppeteer's broken
+         ToUnicode subsetting for Google Fonts variable fonts */
+      @font-face {
+        font-family: 'Lora';
+        font-style: normal; font-weight: 400;
+        src: url('fonts/Lora-Regular.woff2') format('woff2');
       }
-      h1, header h1 {
-        font-family: Georgia, 'Times New Roman', serif !important;
+      @font-face {
+        font-family: 'Lora';
+        font-style: normal; font-weight: 600;
+        src: url('fonts/Lora-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Lora';
+        font-style: italic; font-weight: 400;
+        src: url('fonts/Lora-Italic.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Lora';
+        font-style: italic; font-weight: 600;
+        src: url('fonts/Lora-SemiBoldItalic.woff2') format('woff2');
+      }
+      *, body {
+        font-family: 'Lora', Georgia, serif !important;
       }
 
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
