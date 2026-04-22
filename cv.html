@@ -125,10 +125,12 @@
       .cv-date   { display: block; margin-bottom: .1rem; }
 
       /* Simple list (presentations, awards): year inline before body */
-      .cv-list li  { display: block; }
-      .li-year     { display: inline; }
-      .li-year::after { content: " — "; }
-      .li-body     { display: inline; }
+      .cv-list li       { display: block; }
+      .li-year          { display: inline; }
+      .li-year::after   { content: " — "; }
+      .cv-list li > div { display: inline; }
+      .li-body          { display: inline; }
+      .li-sub           { display: block; }
 
       /* Two-column awards/software → single column */
       .two-col { display: block; }
