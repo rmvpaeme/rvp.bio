@@ -162,32 +162,7 @@
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
       section { margin-top: 1.2rem; }
 
-      /* ── Linearise all grid layouts for ATS parsers ── */
-      /* Experience entries: date on its own line above content */
-      .cv-entry { display: block; page-break-inside: avoid; margin-bottom: 1rem; }
-      .cv-date   { display: block; margin-bottom: .1rem; }
-
-      /* Simple list (presentations, awards): year inline before body */
-      .cv-list li       { display: block; }
-      .li-year          { display: inline; }
-      .li-year::after   { content: " — "; }
-      .cv-list li > div { display: inline; }
-      .li-body          { display: inline; }
-      .li-sub           { display: block; }
-
-      /* Two-column awards/software → single column */
-      .two-col { display: block; }
-      .two-col > div + div { margin-top: .6rem; }
-
-      /* Publication list: number inline before title */
-      .pub-item { display: block; }
-      .pub-num  { display: inline; }
-      .pub-num::after { content: ". "; }
-
-      /* Contact header → single column */
-      .cv-contact { display: block; }
-      .cv-contact span { display: block; margin-bottom: .15rem; }
-
+      .cv-entry { page-break-inside: avoid; }
       .pub-year-group { page-break-inside: avoid; }
     }
   </style>
