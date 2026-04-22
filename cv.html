@@ -116,13 +116,13 @@
     .plain-list li strong { color: #2E3440; }
 
     @media print {
-      /* Disable ligatures — Inter ligature glyphs lack correct ToUnicode mapping
-         in Puppeteer-generated PDFs, causing copy-paste to break "ti", "ll", etc. */
-      * {
-        font-variant-ligatures: none;
-        font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
-        -webkit-font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
-        text-rendering: optimizeSpeed;
+      /* Use system fonts for print — avoids Puppeteer's broken ToUnicode glyph
+         subsetting for Google Fonts, which garbles copy-paste from the PDF */
+      *, body {
+        font-family: Arial, Helvetica, sans-serif !important;
+      }
+      h1, header h1 {
+        font-family: Georgia, 'Times New Roman', serif !important;
       }
 
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
