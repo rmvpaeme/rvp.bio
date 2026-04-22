@@ -29,6 +29,7 @@ const files = [
   for (const { html, pdf, title, subject } of files) {
     const page = await browser.newPage();
     await page.goto(`file://${path.resolve(__dirname, html)}`, { waitUntil: 'networkidle0' });
+    await page.emulateMediaType('print');
     await page.pdf({ ...pdfOptions, path: pdf });
     await page.close();
 

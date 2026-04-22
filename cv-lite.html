@@ -123,7 +123,22 @@
     @media print {
       body { padding: 1.2rem 1.4rem 2rem; font-size: 10pt; }
       section { margin-top: 1.2rem; }
-      .cv-entry { page-break-inside: avoid; }
+
+      /* ── Linearise all grid layouts for ATS parsers ── */
+      .cv-entry { display: block; page-break-inside: avoid; margin-bottom: 1rem; }
+      .cv-date   { display: block; margin-bottom: .1rem; }
+
+      .cv-list li  { display: block; }
+      .li-year     { display: inline; }
+      .li-year::after { content: " — "; }
+      .li-body     { display: inline; }
+
+      .two-col { display: block; }
+      .two-col > div + div { margin-top: .6rem; }
+
+      .cv-contact { display: block; }
+      .cv-contact span { display: block; margin-bottom: .15rem; }
+
       .pub-narrative-item { page-break-inside: avoid; }
     }
   </style>
